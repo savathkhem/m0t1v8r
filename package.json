@@ -1,0 +1,30 @@
+{
+  "name": "m0t1v8r",
+  "version": "1.0.0",
+  "description": "A task scheduling and motivation app that reminds you of the daily to-do tasks and provides motivation to do the tasks that you are less willing to do, such as exercise, wake up, read, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savathkhem/m0t1v8r.git"
+  },
+  "keywords": [
+    "motivate",
+    "app",
+    "github"
+  ],
+  "author": "Savath Khem, Malika Sinkler, Cezar Carvalhaes, Nathan Geckle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/savathkhem/m0t1v8r/issues"
+  },
+  "homepage": "https://github.com/savathkhem/m0t1v8r#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "handlebars": "^4.0.11",
+    "mysql": "^2.15.0",
+    "sequelize": "^4.37.7"
+  }
+}
