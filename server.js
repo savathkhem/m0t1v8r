@@ -25,7 +25,8 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Routes
-require("./routes/api-routes.js")(app);
+// require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // Syncs sequelize models and then starts the Express app
 db.sequelize.sync({ force: true }).then(function() {
