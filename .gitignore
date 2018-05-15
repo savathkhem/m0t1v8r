@@ -5448,3 +5448,7 @@ node_modules/yargs/LICENSE
 node_modules/yargs/package\.json
 
 node_modules/yargs/README\.md
+
+node_modules/
+
+package-lock\.json
