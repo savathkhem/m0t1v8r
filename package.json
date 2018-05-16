@@ -23,11 +23,21 @@
   "homepage": "https://github.com/savathkhem/m0t1v8r#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.1",
+    "browser-sync": "^2.24.4",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-header": "^2.0.5",
+    "gulp-rename": "^1.2.3",
     "handlebars": "^4.0.11",
+    "jquery": "^3.3.1",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
-    "sequelize": "^4.37.7"
+    "sass": "^1.3.2",
+    "sequelize": "^4.37.7",
+    "simple-line-icons": "^2.4.1"
   }
 }
