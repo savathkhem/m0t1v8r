@@ -5,12 +5,12 @@ module.exports = function(app) {
 
   // GET route for getting all of the goals
   app.get("/api/goals", function(req, res) {
-    var id = ""//Get from oAuth
-    db.Post.findAll({
-      where: {UserId: id},
-      include: [db.User]
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    var id = req.id
+    db.Goal.findAll({
+    //   where: {UserId: id},
+    //   include: [db.User]
+    }).then(function(goal) {
+      res.json(goal);
     });
   });
 
