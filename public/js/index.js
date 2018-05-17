@@ -1,6 +1,8 @@
 $(document).ready(function () {
     //****************   Click Listeners  **********************************//
 
+    getGoals({id:1});
+    
     //Create new goal click listener
     $("#submit-goal").on("click", function (event) {
         event.preventDefault();
@@ -54,6 +56,17 @@ $(document).ready(function () {
 
 
     //************************** AJAX functions ******************************//
+
+    //GET all Goals for a user after login:
+    function getGoals(user){
+        $.get("/api/goals", user)
+            .then(function(data){
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    $("#goals-go-here").append(`<li> UserId: ${data[i].UserId}   Goal: ${data[i].goalName} </li>`)
+                }
+            })
+    }
 
     //POST function for new goals
     function newGoal(goalInfo) {
