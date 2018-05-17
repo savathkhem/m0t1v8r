@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,24 +22,35 @@
     <link href="../css/landing-page.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="/js/index.js"></script>
+
+    <!-- FIREBASE/OAUTH STUFF -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="../js/oauth.js"></script>
 </head>
+
 <body>
-    <div class = "container">
+    <div class="container">
         <ul>
-            <li>Goal:<input id = "goal-name" type = "text"></input>
-                Fake User ID:<input id = "fake-id" type = "text"></input>
-                <button id = "submit-goal" type = "submit">Submit</button>
-                <button class = "edit-goal">Edit</button>
-                <button class = "delete-goal">Delete</button>
-                <button class = "mark-complete">Complete</button>
+            <li>Goal:
+                <input id="goal-name" type="text"></input>
+                Fake User ID:
+                <input id="fake-id" type="text"></input>
+                <button id="submit-goal" type="submit">Submit</button>
+                <button class="edit-goal">Edit</button>
+                <button class="delete-goal">Delete</button>
+                <button class="mark-complete">Complete</button>
             </li>
             <li>Track Activity:
-                <button id = "submit-activity" type = "submit">Track!</button>
+                <button id="submit-activity" type="submit">Track!</button>
             </li>
         </ul>
         <div id= "goals-go-here"></div>
 
     </div>
-    
+    <div id="firebaseui-auth-container"></div>
 </body>
+
 </html>
