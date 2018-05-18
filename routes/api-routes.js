@@ -7,7 +7,7 @@ module.exports = function(app) {
   app.get("/api/goals", function(req, res) {
     var id = req.id
     db.Goal.findAll({
-    //   where: {UserId: id},
+      where: {UserId: id},
     //   include: [db.User]
     }).then(function(goal) {
       res.json(goal);
