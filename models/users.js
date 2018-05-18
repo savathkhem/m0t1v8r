@@ -2,7 +2,12 @@ module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
         userId: {          
             type: DataTypes.STRING,
-            allowNull: false,},
+            allowNull: false,
+        },    
+        // oauth_provider: {
+        // },
+        // oauth_uid: {
+        // },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
