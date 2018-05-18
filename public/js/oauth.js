@@ -1,3 +1,4 @@
+// var firebase = require('firebase');
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyByRhhek59x3vV1xPtrpXQkyk4yCmSkEC0",
@@ -18,6 +19,13 @@
   var provider = new firebase.auth.FacebookAuthProvider();
   var provider = new firebase.auth.TwitterAuthProvider();
   var provider = new firebase.auth.GithubAuthProvider();
+
+  // Get Elements
+  const txtEmail = document.getElementById('txtEmail');
+  const txtPassword = document.getElementById('txtPassword');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnSignUp = document.getElementById('btnSignUp');
+  const btnLogOut = document.getElementById('btnLogout');
 
   var uiConfig = {
     callbacks: {
