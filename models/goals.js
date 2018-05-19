@@ -15,6 +15,12 @@ module.exports = function(sequelize, DataTypes) {
         activity: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        phoneNumber: {
+            type: DataTypes.INTEGER,
+        },
+        reminderTime: {
+            type: DataTypes.INTEGER,
         }
     })
     return Goal;
