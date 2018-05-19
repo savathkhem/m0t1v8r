@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
         completed: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
+        },
+        activity: {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
     })
     return Goal;

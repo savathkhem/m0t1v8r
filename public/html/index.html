@@ -24,17 +24,13 @@
         <link href="../css/landing-page.css" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="../js/index.js"></script>
+        
         
         <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-        <!-- <script src="../js/oauth.js"></script> -->
-
-
-        
+        <script src="../js/index.js"></script>
         
 
     </head>
@@ -43,40 +39,18 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">M0T1V8R</a>
+                <span class="navbar-brand" href="#">M0T1V8R</span>
                 <div class="collapse navbar-collapse d-flex justify-content-end">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#getStarted">Get Started</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logIn">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logIn">Sign In/Up</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <!-- Modal -->
-        <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="logInLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="logInLabel">Log In</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" id="firebaseui-auth-container">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $('#logIn').on('shown.bs.modal', function () {
-                $('#myInput').trigger('focus')
-            });
-        </script>
+        
 
         <!-- Masthead -->
         <header class="masthead text-white text-center">
@@ -168,7 +142,7 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="../images/savath.jpeg" alt="">
+                            <img class="img-fluid rounded-circle mb-3" src="../images/savath.jpg" alt="">
                             <h5>Savath Khem</h5>
                             <p class="font-weight-light mb-0"></p>
                         </div>
@@ -210,7 +184,7 @@
                         <form>
                             <div class="form-row">
                                 <div class="col-12 col-md-3 mx-auto">
-                                    <button type="" class="btn btn-block btn-lg btn-primary">Sign Up!</button>
+                                    <a type="" class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#logIn">Sign In/Up!</a>
                                 </div>
                             </div>
                         </form>
@@ -219,12 +193,37 @@
             </div>
         </section>
 
+        <!-- Modal -->
+        <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="logInLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="logInLabel">Sign In/Up</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="firebaseui-auth-container">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <script type="text/javascript">
+                $('#logIn').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+                });
+            </script>
+
         <!-- Footer -->
         <footer class="footer bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; M0T1V8R 2018. All Rights Reserved. Special thanks to Bootstrap for the landing page.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; M0T1V8R 2018. All Rights Reserved. Special thanks to Bootstrap for the template.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
                         <ul class="list-inline mb-0">
@@ -239,12 +238,21 @@
             </div>
         </footer>
 
+        <script type="text/javascript">
+            var $root = $('html, body');
+
+            $('a[href^="#"]').click(function () {
+                $root.animate({
+                    scrollTop: $( $.attr(this, 'href') ).offset().top
+                }, 800);
+                return false;
+            });
+        </script>
+
         <!-- Bootstrap core JavaScript -->
         
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         
-
     </body>
-
 </html>
