@@ -13,7 +13,7 @@ module.exports = function(app) {
 
   //User page GET
   app.get("/users/:user", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/html/user.html"));
+    res.sendFile(path.join(__dirname, "../public/html/goals.html"));
   });
 
   //Dummy page
