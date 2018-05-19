@@ -1,7 +1,3 @@
-//NORMAL PROJECT IS HERE ON MY GITHUB 
-//" https://github.com/giorga8/stylished-sitemap "
-//ALSO ON GITHUB IS "HTML COORD" VERSION OF THIS WORK
-//COMMENT&LIKE ^-^
 var SEPARATION = 40,
     AMOUNTX = 35,
     AMOUNTY = 35;
@@ -14,7 +10,7 @@ init();
 animate();
 
 function init() {
-    container = document.createElement('bg');
+    container = document.createElement('div');
     document.body.appendChild(container);
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 10000);
     camera.position.z = 250;
@@ -24,18 +20,18 @@ function init() {
     // particles
     var PI2 = Math.PI * 2;
     var material = new THREE.SpriteCanvasMaterial({
-        color: 0xED1C5B,
+        color: 0xf8f9fa,
         program: function(context) {
             context.beginPath();
             context.arc(0, 0, 0.2, PI2, 0.5, true);
             context.shadowBlur = 25;
-            context.shadowColor = "#ED1C5B";
+            context.shadowColor = "#f8f9fa";
             context.fill();
         }
     });
     var geometry = new THREE.Geometry();
     var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
-        color: 0xED1C5B,
+        color: 0xf8f9fa,
         opacity: 0.3
     }));
     scene.add(line);

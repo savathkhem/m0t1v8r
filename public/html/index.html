@@ -19,6 +19,7 @@
         <link href="../vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
         <!-- Custom styles for this template -->
         <link href="../css/landing-page.css" rel="stylesheet">
@@ -49,6 +50,8 @@
                 </div>
             </div>
         </nav>
+
+        
 
         <!-- Masthead -->
         <header class="masthead text-white text-center">
@@ -193,28 +196,28 @@
 
         <!-- Modal -->
         <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="logInLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="logInLabel">Sign In/Up</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body" id="firebaseui-auth-container">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logInLabel">Sign In/Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="firebaseui-auth-container">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
-    
-            <script type="text/javascript">
-                $('#logIn').on('shown.bs.modal', function () {
-                    $('#myInput').trigger('focus')
-                });
-            </script>
+        </div>
+
+        <script type="text/javascript">
+            $('#logIn').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            });
+        </script>
 
         <!-- Footer -->
         <footer class="footer bg-light">
@@ -251,6 +254,9 @@
         
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://threejs.org/build/three.min.js"></script>
+        <script src="https://threejs.org/examples/js/renderers/Projector.js"></script>
+        <script src="https://threejs.org/examples/js/renderers/CanvasRenderer.js"></script>
         
     </body>
 </html>
