@@ -60,6 +60,7 @@
             <div class="col-md-9 mx-auto">
                 <div class="card card-tasks">
                     <div class="card-header">
+                        <button class="card-category breeSerif float-right" data-toggle="modal" data-target="#newGoal">New Goal</button>
                         <h6 class="card-category breeSerif">List of Goals</h6>
                         <h4 class="card-title breeSerif text-center">Goals</h4>
                     </div>
@@ -67,27 +68,7 @@
                         <div class="table-full-width table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox">
-                                                    <span class="form-check-sign"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-    
-                                        <td class="text-left breeSerif">Practice Rock Climbing </td>
-                                        
-                                        <td class="td-actions text-right">
-                                            <button type="button" class="btn" data-original-title="Edit Task">
-                                                <i class="fas fa-check"></i>
-                                            </button>
-                                            <button type="button" class="btn" data-original-title="Remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -95,6 +76,63 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="newGoal" tabindex="-1" role="dialog" aria-labelledby="newGoalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newGoalLabel">New Goal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Goal Name:</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter goal name here" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="activity">Activity:</label>
+                                <input type="text" class="form-control" id="activity" placeholder="Enter activity here" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Time To Receive Text:</label>
+                                <select class="form-control" id="time">
+                                    <option>7am</option>
+                                    <option>8am</option>
+                                    <option>9am</option>
+                                    <option>10am</option>
+                                    <option>11am</option>
+                                    <option>12pm</option>
+                                    <option>1pm</option>
+                                    <option>2pm</option>
+                                    <option>3pm</option>
+                                    <option>4pm</option>
+                                    <option>5pm</option>
+                                    <option>6pm</option>
+                                    <option>7pm</option>
+                                    <option>8pm</option>
+                                    <option>9pm</option>
+                                    <option>10pm</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $('#newGoal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            });
+        </script>
         
 
         <!-- Footer -->
