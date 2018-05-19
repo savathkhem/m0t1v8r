@@ -122,3 +122,46 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+.carousel-indicators .active {
+  background-color: #007bff;
+}
+
+.carousel-indicators li {
+  background-color: #212529;
+}
+
+.carousel-indicators:hover {
+  color: #007bff;
+}
+
+.carousel-control-next-icon {
+  background-color: #212529;
+}
+
+.carousel-inner {
+  width: 50%
+}
+
+.material-icons {
+  font-size: 3em;
+  color: #212529
+}
+
+.material-icons:hover {
+  font-size: 3em;
+  color: #007bff
+}
+
+.carousel-inner {
+  width:30%
+}
+
+.card {
+  border:0;
+}
+
+.nav-link a:hover {
+  color: #007bff;
+  font-weight: 300;
+}
