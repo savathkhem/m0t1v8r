@@ -15,7 +15,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Titan+One" rel="stylesheet">
-        <script src="../js/index.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="/js/index.js"></script>
+    
+        <!-- FIREBASE/OAUTH STUFF -->
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <!-- <script src="../js/oauth.js"></script> -->
+        <script src="/js/index.js"></script>
 
     </head>
 
@@ -57,6 +66,24 @@
                 </div>
             </div>
         </nav>
+        <div class = "container">
+                <ul>
+                        <li>Goal:
+                            <input id="goal-name" type="text"></input>
+                            Fake User ID:
+                            <input id="fake-id" type="text"></input>
+                            <button id="submit-goal" type="submit">Submit</button>
+                            <button class="edit-goal">Edit</button>
+                            <button class="delete-goal">Delete</button>
+                            <button class="mark-complete">Complete</button>
+                        </li>
+                        <li>Track Activity:
+                            <button id="submit-activity" type="submit">Track!</button>
+                        </li>
+                    </ul>
+                    <div id= "goals-go-here"></div>
+                    <button id = "sign-out">Sign OUT!</button>
+        </div>
 
         <script>
             $(document).ready(function () {
