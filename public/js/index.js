@@ -89,6 +89,7 @@ $(document).ready(function () {
                 userId: userObject.uid,
                 goalName: $("#goal-name").val().trim(),
                 activity: $("#activity-name").val().trim(),
+                reminderTime: $("#remind-me").val().trim(),
             };
             newGoal(goalObj);
         });
