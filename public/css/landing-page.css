@@ -15,13 +15,13 @@ h6 {
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 header.masthead .overlay {
@@ -40,8 +40,8 @@ header.masthead h1 {
 
 @media (min-width: 768px) {
   header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    /* padding-top: 12rem;
+    padding-bottom: 12rem; */
   }
   header.masthead h1 {
     font-size: 3rem;
@@ -101,7 +101,7 @@ header.masthead h1 {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
