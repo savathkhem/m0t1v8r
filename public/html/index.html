@@ -30,7 +30,8 @@
         <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="../js/oauth.js"></script>
+        <script src="../js/index.js"></script>
+        
 
     </head>
     <body>
@@ -43,36 +44,13 @@
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#getStarted">Get Started</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logIn">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logIn">Sign In/Up</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <!-- Modal -->
-        <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="logInLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="logInLabel">Sign Up</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" id="firebaseui-auth-container">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script type="text/javascript">
-            $('#logIn').on('shown.bs.modal', function () {
-                $('#myInput').trigger('focus')
-            });
-        </script>
+        
 
         <!-- Masthead -->
         <header class="masthead text-white text-center">
@@ -206,7 +184,7 @@
                         <form>
                             <div class="form-row">
                                 <div class="col-12 col-md-3 mx-auto">
-                                    <button type="" class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#logIn">Sign Up!</button>
+                                    <a type="" class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#logIn">Sign In/Up!</a>
                                 </div>
                             </div>
                         </form>
@@ -214,6 +192,31 @@
                 </div>
             </div>
         </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="logInLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="logInLabel">Sign In/Up</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="firebaseui-auth-container">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <script type="text/javascript">
+                $('#logIn').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+                });
+            </script>
 
         <!-- Footer -->
         <footer class="footer bg-light">
