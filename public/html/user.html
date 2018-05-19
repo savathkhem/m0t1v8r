@@ -23,7 +23,6 @@
         <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <!-- <script src="../js/oauth.js"></script> -->
         <script src="/js/index.js"></script>
 
     </head>
@@ -31,7 +30,7 @@
     <body>
         <nav>
             <div class="nav-wrapper grey darken-3">
-                <span class="brand-logo" style="color: #ff5722">WELCOME USER</span>
+                <span class="brand-logo" style="color: #ff5722" id = "welcome"></span>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                         <a href="">ABOUT</a>
@@ -70,8 +69,6 @@
                 <ul>
                         <li>Goal:
                             <input id="goal-name" type="text"></input>
-                            Fake User ID:
-                            <input id="fake-id" type="text"></input>
                             <button id="submit-goal" type="submit">Submit</button>
                             <button class="edit-goal">Edit</button>
                             <button class="delete-goal">Delete</button>
@@ -84,19 +81,5 @@
                     <div id= "goals-go-here"></div>
                     <button id = "sign-out">Sign OUT!</button>
         </div>
-
-        <script>
-            $(document).ready(function () {
-                $('.fixed-action-btn').floatingActionButton();
-            });
-
-            document.addEventListener('DOMContentLoaded', function () {
-                var elems = document.querySelectorAll('.fixed-action-btn');
-                var instances = M.FloatingActionButton.init(elems, {
-                    direction: 'left',
-                    hoverEnabled: false
-                });
-            });
-        </script>
     </body>
 </html>

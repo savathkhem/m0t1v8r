@@ -4,10 +4,11 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the goals
-  app.get("/api/goals", function(req, res) {
-    var id = req.id
+  app.get("/api/goals/:userid", function(req, res) {
+    var id = req.params.userid
+    console.log(req.params.userid)
     db.Goal.findAll({
-      where: {UserId: id},
+      where: {userId: id},
     //   include: [db.User]
     }).then(function(goal) {
       res.json(goal);
