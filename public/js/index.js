@@ -9,9 +9,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// // Create a variable to reference the database.
-// var database = firebase.database();
-
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var provider = new firebase.auth.FacebookAuthProvider();
@@ -51,6 +48,7 @@ var uiConfig = {
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
+//Sign out button, MOVE THIS LATER!
 window.onload = function () {
     document.querySelector('#sign-out').addEventListener('click', function (e) {
         e.preventDefault();
@@ -60,75 +58,15 @@ window.onload = function () {
 }
 
 
-
+//Sets up jQuery, on DOM load
 $(document).ready(function () {
+    //Checks for login status, page renders data if logged in.
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            console.log('id: '+uid)
-            var providerData = user.providerData;
-            console.log(displayName)
-            $("#welcome").html("Welcome " + displayName + "!")
-            getGoals(uid);
+            console.log(user)
+            renderPage(user)
             //Create new goal click listener
-            $("#submit-goal").on("click", function (event) {
-                event.preventDefault();
-                var goalObj = {
-                    userId: uid,
-                    goalName: $("#goal-name").val().trim()
-                };
-                newGoal(goalObj);
-            });
-
-            //Track Activity click listener
-            $("#submit-activity").on("click", function (event) {
-                event.preventDefault();
-                var activityObj = {
-                    userId: uid,
-                    goalId: ""//from some data attribute in our html
-                };
-                logActivity(activityObj);
-            });
-
-            //Delete Goal click listener
-            $(".delete-goal").on("click", function (event) {
-                event.preventDefault();
-                var goalId = $("#fake-id").val().trim();
-                deleteGoal(goalId);
-            });
-
-            //Mark Complete Listener
-            $(".mark-complete").on("click", function (event) {
-                event.preventDefault();
-                var id = "";//TBD Grab from oAuth...
-                var completeObj = {
-                    id: $("#fake-id").val().trim(),
-                };
-
-                markComplete(completeObj, id)
-            })
-
-            //Edit Goal Listener
-            $(".edit-goal").on("click", function (event) {
-                event.preventDefault();
-                var id = "";//TBD Grab from oAuth...
-                var goalObj = {
-                    id: $("#fake-id").val().trim(),
-                    goalName: $("#goal-name").val().trim()
-                };
-
-                updateGoal(goalObj, id);
-            })
-
-
-
-
         } else {
             // User is signed out.
             // ...
@@ -137,30 +75,88 @@ $(document).ready(function () {
     });
 
 
+    //Our big fat render page function, uses 'user' object returned from Firebase Auth
+    var renderPage = function (userObject) {
+        //Populate page with user info
+        $("#welcome").html("Welcome " + userObject.displayName + "!");
+        //Retrieves goals from database
+        getGoals(userObject.uid);
 
-    //****************   Click Listeners  **********************************//
+        //Click Listeners
+        $(document).on("click", "#submit-goal", function (event) {
+            event.preventDefault();
+            var goalObj = {
+                userId: userObject.uid,
+                goalName: $("#goal-name").val().trim(),
+                activity: $("#activity-name").val().trim(),
+            };
+            newGoal(goalObj);
+        });
+        //Track Activity click listener
+        $(document).on("click",".submit-activity", function (event) {
+            event.preventDefault();
+            var activityObj = {
+                goalId: $(this).data('id'),
+                activityName: $(this).data('activity'),
+            };
+            console.log('activObj: '+ activityObj)
+            logActivity(activityObj);
+        });
 
+        //Delete Goal click listener
+        $(document).on("click", ".delete-goal", function (event) {
+            console.log("delete click");
+            event.preventDefault();
+            var goalId = $(this).data('id');
+            console.log('delete id: ' + goalId)
+            deleteGoal(goalId);
+        });
 
-
-
+        //Mark Complete Listener
+        $(document).on("click", ".mark-complete", function (event) {
+            console.log("complete click");
+            event.preventDefault();
+            var id = "";//TBD Grab from oAuth...
+            var completeObj = {
+                id: $(this).data("id"),
+            };
+            markComplete(completeObj, id)
+        })
+        //Edit Goal Listener
+        $(document).on("click", ".edit-goal", function (event) {
+            event.preventDefault();
+            var id = "";//TBD Grab from oAuth...
+            var goalObj = {
+                id: $(this).data("id"),
+                goalName: $("#goal-name").val().trim()
+            };
+            updateGoal(goalObj, id);
+        })
+    }
 
 
     //************************** AJAX functions ******************************//
 
     //GET all Goals for a user after login:
-    function getGoals(id) {
+    var getGoals = function (id) {
         console.log(id)
         $.get("/api/goals/"+id,)
             .then(function (data) {
                 console.log(data)
                 for (var i = 0; i < data.length; i++) {
-                    $("#goals-go-here").append(`<li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} </li>`)
+                    $("#goals-go-here").append(`
+                    <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
+                    <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
+                    <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
+                    <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                    </li>
+                    `)
                 }
             })
     }
 
     //POST function for new goals
-    function newGoal(goalInfo) {
+    var newGoal = function (goalInfo) {
         $.post("/api/goals", goalInfo)
             .then(function (data) {
                 console.log("New Goal:" + data);
@@ -169,50 +165,44 @@ $(document).ready(function () {
     }
 
     //POST function for logging activity
-    function logActivity(activity) {
-        $.post("/api/tracking", activity)
+    var logActivity = function (activity) {
+        $.post("/api/goals/track", activity)
             .then(function (data) {
                 console.log("Track:" + data);
                 location.reload();
             })
     }
 
-    function deleteGoal(id) {
+    var deleteGoal = function (id) {
         $.ajax({
             method: "DELETE",
             url: "/api/goals/" + id
         }).then(function (data) {
             console.log("Delete: " + data)
+            location.reload();
         })
     }
 
-    function markComplete(complete, id) {
+    var markComplete = function (complete, id) {
         $.ajax({
             method: "PUT",
             url: "/api/goals/complete" + id,
             data: complete
         }).then(function (data) {
             console.log(data)
+            location.reload();
         })
     }
 
-    function updateGoal(edit, id) {
+    var updateGoal = function (edit, id) {
         $.ajax({
             method: "PUT",
             url: "/api/goals/" + id,
             data: edit
         }).then(function (data) {
             console.log(data)
+            location.reload();
         })
     }
-
-    function loginUser() {
-        $.ajax({
-            method: "POST",
-            url: "/login",
-            data: "poop"
-        })
-    }
-
 });
 

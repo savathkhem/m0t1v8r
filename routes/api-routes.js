@@ -35,6 +35,14 @@ module.exports = function(app) {
     });
   });
 
+    // POST route for saving activities
+    app.post("/api/goals/track", function(req, res) {
+      console.log(JSON.stringify(req.body))
+      db.Activity.create(req.body).then(function(activity) {
+        res.json(activity);
+      });
+    });
+
   // DELETE route for deleting posts
   app.delete("/api/goals/:id", function(req, res) {
     db.Goal.destroy({
