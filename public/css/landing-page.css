@@ -38,10 +38,10 @@ header.masthead h1 {
 }
 
 @media (min-width: 768px) {
-  header.masthead {
+  /* header.masthead {
     padding-top: 12rem;
     padding-bottom: 12rem;
-  }
+  } */
   header.masthead h1 {
     font-size: 3rem;
   }
