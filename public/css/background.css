@@ -1,0 +1,54 @@
+.grad:after {
+	content: '';
+	height: 100%;
+	left: 0;
+	opacity: 0.7;
+	position: absolute;
+	width: 100%;
+}
+
+.grad::after {
+	background: radial-gradient( circle at top, #513057, #191f2c );
+}
+span{
+        float:left;
+        text-decoration:none;
+        background-color:#de4a4a;
+        border:1px solid #de4a4a;
+        font-size:14px;
+        border-bottom-left-radius:0;
+        border-top-left-radius:0;
+        display:inline-block;
+        width: 81px;
+        height:63px;
+        padding:4px 0 0 0;
+        margin-top:-61px;
+        line-height:2.323471429;
+    }
+    .rome{
+        background-image: url(http://riuka.net46.net/sitemap/rome.png);
+        display:block;
+        width: 81px;
+        height:76px;
+        background-size: 81px 76px;
+        margin-top: 0.14px;
+        margin-left: 8.01%;
+        -webkit-transition: margin-top 0.4s; /* For Safari 3.1 to 6.0 */
+    transition: margin-top 0.4s;
+    }
+    .rome:hover{
+       display:block;
+        margin-top: 53.01px;
+        margin-left: 8.01%;
+    }
+    .container{
+        background-image: url(http://riuka.net46.net/sitemap/rome3.png);
+        opacity:0.7;
+        	width: 81px;
+	height: 23px;
+        display:block;
+        margin-top: -86.01px;
+        margin-left: 8.01%;
+  position:relative;
+    }
+    

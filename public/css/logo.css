@@ -1,0 +1,78 @@
+body {
+    background-color: #222222;
+    /* background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px; */
+  }
+  
+  #container {
+    margin: auto;
+  }
+  
+  #logo{
+    color: #fff;
+    font-family: Pacifico;
+    -webkit-animation: none;
+    -moz-animation: none;
+    font-size: 5em;
+    margin: 20px 0 20px 0;
+  }
+  
+  a {
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  
+  #logo a {
+    color:#228DFF;
+    font-family: Pacifico;
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: neon1 10s ease-in-out infinite alternate;
+  }
+  
+  #logo a:hover {
+    color: #228DFF;
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+  }
+  
+  
+  @-webkit-keyframes neon1 {
+    from {
+        text-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+      }
+      to {
+        text-shadow: 0 0 5px #007bff, 0 0 10px #007bff, 0 0 15px #007bff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+      }
+    }
+  
+  
+  /*glow*/
+  
+  @keyframes neon1 {
+    from {
+      text-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+      text-shadow: 0 0 5px #007bff, 0 0 10px #007bff, 0 0 15px #007bff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+  }
+  
+  /*REEEEEEEEEEESPONSIVE*/
+  
+  @media (max-width: 650px) {
+    #container {
+      width: 100%;
+    }
+    p {
+      font-size: inherit;
+    }
+  }
+  
+  #logo {
+    padding-left: 20px;
+    margin-bottom: 5px;
+    margin-top: 25px;
+  }
