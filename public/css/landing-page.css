@@ -4,7 +4,10 @@ h1, h2, h3, h4, h5, h6 {
 
 header.masthead {
   position: relative;
-  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
+  /* background-color: #343a40; */
+  /* background: linear-gradient(to right, #007bff, #343a40 , #007bff); */
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -89,7 +92,8 @@ header.masthead h1 {
 
 .call-to-action {
   position: relative;
-  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
+  background-color: #343a40;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

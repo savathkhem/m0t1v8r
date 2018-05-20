@@ -11,22 +11,28 @@
     <title>User Page</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css">
 
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Titan+One" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-        <script src= "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Titan+One" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
 
-        "
 
-    
-        <!-- FIREBASE/OAUTH STUFF -->
-        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="/js/index.js"></script>
-    <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FIREBASE/OAUTH STUFF -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/js/index.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -58,7 +64,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <span class="navbar-brand" href="#" style="font-family: Pacifico; color: #007bff">M0T1V8R</span>
+            <a class="navbar-brand" href="/" style="font-family: Pacifico; color: #007bff">M0T1V8R</a>
             <span class="brand-logo" style="color: #ff5722" id="welcome"></span>
             <div class="collapse navbar-collapse d-flex justify-content-end">
                 <ul class="navbar-nav">
@@ -67,7 +73,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#logout" id="sign-out">Sign Out</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#logout" id="sign-out" href="/">Sign Out</a>
                     </li>
                 </ul>
             </div>
@@ -76,19 +82,20 @@
 
     <!-- MORGAN FREEMAN MORGAN FREEMAN MORGAN FREEMAN MORGAN FREEMAN -->
     <div class="container">
-        <div class="col">
-            <img style="width:10%; height:10%;" src="http://www.gstatic.com/tv/thumb/persons/47162/47162_v9_bb.jpg">
+        <div class="row">
+            <div class="col col-lg-2">
+                <!-- PROFILE PIC -->
+                <img style="width:70%" src="http://www.gstatic.com/tv/thumb/persons/47162/47162_v9_bb.jpg">
+            </div>
+            <div class="col col-sm-8">
+                <!-- PROFILE DESCRIPTION -->
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat sit, obcaecati dolorum laboriosam labore
+                    velit qui, sapiente aliquam assumenda sint commodi blanditiis eaque est illo magnam quod quae exercitationem
+                    quas ea explicabo unde optio nesciunt! Laborum, eius facere quisquam ad ab sequi asperiores natus corporis
+                    facilis, alias magni incidunt exercitationem?</p>
+            </div>
         </div>
-        <div class="col">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat sit, obcaecati dolorum laboriosam labore velit
-                qui, sapiente aliquam assumenda sint commodi blanditiis eaque est illo magnam quod quae exercitationem quas
-                ea explicabo unde optio nesciunt! Laborum, eius facere quisquam ad ab sequi asperiores natus corporis facilis,
-                alias magni incidunt exercitationem?</p>
-        </div>
-
     </div>
-
-
 
     <!-- <div class = "container">
                 <ul>
@@ -106,41 +113,33 @@
                                 <button id="submit-goal" type="submit">Submit</button>
                             </li>
 
-                    </ul>-->
-    <!-- <div id="goals-go-here"></div> -->
-
-
-
+                    </ul>
+    <div id="goals-go-here"></div> -->
 
     <!-- Goals -->
-    <div class="row">
-        <div class="col-md-9 mx-auto">
-            <div class="card card-tasks">
-                <div class="card-header">
-                    <button class="card-category breeSerif float-right" data-toggle="modal" data-target="#newGoal">New Goal</button>
-                    <h6 class="card-category breeSerif">List of Goals</h6>
-                    <h4 class="card-title breeSerif text-center">Goals</h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-full-width table-responsive">
-                        <table class="table">
-                            <tbody>
-
-                                <!-- goals go here -->
-                                <div id="goals-go-here"></div>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <canvas id="myChart" width="400" height="100"></canvas>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="content">
+    <div class="container">
         <div class="row">
+
+            <div class="col col-md-6">
+                <div class="card card-tasks">
+                    <div class="card-header">
+                        <button class="card-category breeSerif float-right" data-toggle="modal" data-target="#newGoal">New Goal</button>
+                        <h6 class="card-category breeSerif">List of Goals</h6>
+                        <h4 class="card-title breeSerif text-center">Goals</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-full-width table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <div id="goals-go-here"></div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <canvas id="myChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
             <div class="col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
@@ -173,94 +172,114 @@
 
 
 
-            <!-- New Goal Modal -->
-            <div class="modal fade" id="newGoal" tabindex="-1" role="dialog" aria-labelledby="newGoalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="newGoalLabel">New Goal</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+
+
+        </div>
+    </div>
+
+
+    <!-- New Goal Modal -->
+    <div class="modal fade" id="newGoal" tabindex="-1" role="dialog" aria-labelledby="newGoalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newGoalLabel">New Goal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Goal Name:</label>
+                            <input type="text" class="form-control" id="goal-name" placeholder="Enter goal name here" required>
                         </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="name">Goal Name:</label>
-                                    <input type="text" class="form-control" id="goal-name" placeholder="Enter goal name here" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="activity">Activity:</label>
-                                    <input type="text" class="form-control" id="activity-name" placeholder="Enter activity here" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="time">Time To Receive Text:</label>
-                                    <select class="form-control" id="remind-me">
-                                        <option>7am</option>
-                                        <option>8am</option>
-                                        <option>9am</option>
-                                        <option>10am</option>
-                                        <option>11am</option>
-                                        <option>12pm</option>
-                                        <option>1pm</option>
-                                        <option>2pm</option>
-                                        <option>3pm</option>
-                                        <option>4pm</option>
-                                        <option>5pm</option>
-                                        <option>6pm</option>
-                                        <option>7pm</option>
-                                        <option>8pm</option>
-                                        <option>9pm</option>
-                                        <option>10pm</option>
-                                    </select>
-                                </div>
-                            </form>
+                        <div class="form-group">
+                            <label for="activity">Activity:</label>
+                            <input type="text" class="form-control" id="activity-name" placeholder="Enter activity here" required>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit-goal">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <div class="form-group">
+                            <label for="time">Time To Receive Text:</label>
+                            <select class="form-control" id="remind-me">
+                                <option>7am</option>
+                                <option>8am</option>
+                                <option>9am</option>
+                                <option>10am</option>
+                                <option>11am</option>
+                                <option>12pm</option>
+                                <option>1pm</option>
+                                <option>2pm</option>
+                                <option>3pm</option>
+                                <option>4pm</option>
+                                <option>5pm</option>
+                                <option>6pm</option>
+                                <option>7pm</option>
+                                <option>8pm</option>
+                                <option>9pm</option>
+                                <option>10pm</option>
+                            </select>
                         </div>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit-goal">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Setting Modal -->
-            <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="settingsLabel">Settings</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+    <!-- Setting Modal -->
+    <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsLabel">Settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                            <small id="nameHelp" class="form-text text-muted">This is the name you'd like us to refer you to you as.</small>
                         </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
-                                    <small id="nameHelp" class="form-text text-muted">This is the name you'd like us to refer you to you as.</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="number" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="number" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx">
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
+        </div>
 
-            <script type="text/javascript">
-                $('#newGoal').on('shown.bs.modal', function () {
-                    $('#myInput').trigger('focus')
-                });
-            </script>
+        <script>
+            //Click Listeners
+            $(document).on("click", "#submit-goal", function (event) {
+                event.preventDefault();
+                var goalObj = {
+                    userId: userObject.uid,
+                    goalName: $("#goal-name").val().trim(),
+                    activity: $("#activity-name").val().trim(),
+                    reminderTime: $("#remind-me").val().trim(),
+                };
+                newGoal(goalObj);
+            });
+        </script>
+    </div>
+
+    <script type="text/javascript">
+        $('#newGoal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        });
+    </script>
 
 
 
@@ -279,29 +298,29 @@
                             </a>
                         </li>
                     </ul>
-                    <div id= "goals-go-here"></div>
+                    <!-- <div id="goals-go-here"></div> -->
 
-                    <button id = "sign-out">Sign OUT!</button>
+                    <!-- <button id="sign-out">Sign OUT!</button> -->
                 </div>
-            </footer>
+    </footer>
 
-            <script type="text/javascript">
-                var $root = $('html, body');
+    <script type="text/javascript">
+        var $root = $('html, body');
 
-                $('a[href^="#"]').click(function () {
-                    $root.animate({
-                        scrollTop: $($.attr(this, 'href')).offset().top
-                    }, 800);
-                    return false;
-                });
-            </script>
+        $('a[href^="#"]').click(function () {
+            $root.animate({
+                scrollTop: $($.attr(this, 'href')).offset().top
+            }, 800);
+            return false;
+        });
+    </script>
 
-            <!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript -->
 
-            <script src="../vendor/jquery/jquery.min.js"></script>
-            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <script src="../js/graph.js"></script>
-        </div>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/graph.js"></script>
+    </div>
 
 </body>
 
