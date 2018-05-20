@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
 
         <meta charset="utf-8">
@@ -9,31 +8,37 @@
         <meta name="author" content="">
 
         <title>M0T1V8R Landing Page</title>
+        <!-- Our Styles -->
         <link href="../css/style.css" rel="stylesheet" type="text/css">
-
-        <!-- Bootstrap core CSS -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Custom fonts for this template -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-
-        <!-- Custom styles for this template -->
+        <link href="../css/logo.css" rel="stylesheet" type="text/css">
         <link href="../css/landing-page.css" rel="stylesheet">
 
+        <!-- Bootstrap -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+        <!-- Jquery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
+        <!-- Custom fonts for this template -->
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+        
+        <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
         <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        <!-- Our JS -->
         <script src="../js/index.js"></script>
 
-        <link href="../css/logo.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
 
@@ -92,13 +97,13 @@
         <section class="showcase">
             <div class="container-fluid p-0">
                 <div class="row no-gutters">
-                    <div class="showcase-text mx-auto text-center col-lg-6">
-                        <h3>The Idea:</h3>
+                    <div class="showcase-text mx-auto text-center col-lg-5">
+                        <h3 class="breeSerif">The Idea:</h3>
                         <p class="lead mb-0">M0T1V8R was made to help you keep up with goals you want to complete daily, such as: flossing your teeth,
                             exercising, eating healthy, etc. </p>
                     </div>
-                    <div class="showcase-text mx-auto text-center col-lg-6">
-                        <h3>What we hope to accomplish:</h3>
+                    <div class="showcase-text mx-auto text-center col-lg-5">
+                        <h3 class="breeSerif">What we hope to accomplish:</h3>
                         <p class="lead mb-0">We hope to help you get into the habit of accomplishing your goals so that you won't need to use M0T1V8R.</p>
                     </div>
                 </div>
@@ -131,7 +136,7 @@
                         <div class="card  mx-auto" style="width: 18rem;">
                             <img class="card-img-top" src="../images/twilio.png" alt="Twilio">
                             <div class="card-body">
-                                <h5 class="card-title">We Use Twilio</h5>
+                                <h5 class="card-title breeSerif">We Use Twilio</h5>
                                 <p class="card-text">We use Twilio to send you texts reminding you of your goals. (Message and data rates may apply).</p>
                             </div>
                         </div>
@@ -141,7 +146,7 @@
                         <div class="card  mx-auto" style="width: 18rem;">
                             <img class="card-img-top" src="../images/firebase.png" alt="Firebase">
                             <div class="card-body">
-                                <h5 class="card-title">Firebase Authentication</h5>
+                                <h5 class="card-title breeSerif">Firebase Authentication</h5>
                                 <p class="card-text">We use Firebase to let our users log in and track their progress.</p>
                             </div>
                         </div>
@@ -151,7 +156,7 @@
                         <div class="card  mx-auto" style="width: 18rem;">
                             <img class="card-img-top" src="../images/bootstrap.png" alt="Bootstrap">
                             <div class="card-body">
-                                <h5 class="card-title">BootStrap</h5>
+                                <h5 class="card-title breeSerif">BootStrap</h5>
                                 <p class="card-text">Our website use the Bootstrap 4 CSS framework. It is also mobile friendly.</p>
                             </div>
                         </div>
@@ -259,7 +264,6 @@
         </script>
 
         <!-- Footer -->
-        
         <footer class="footer bg-light">
             <div class="container">
                 <div class="row">
@@ -270,7 +274,7 @@
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
                                 <a href="https://github.com/savathkhem/m0t1v8r">
-                                    <i class="fa fa-github fa-2x fa-fw"></i>
+                                    <i class="fab fa-github fa-2x fa-fw"></i>
                                 </a>
                             </li>
                         </ul>
@@ -288,10 +292,6 @@
                 return false;
             });
         </script>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     </body>
 </html>
