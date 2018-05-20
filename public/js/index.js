@@ -1,3 +1,4 @@
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyByRhhek59x3vV1xPtrpXQkyk4yCmSkEC0",
@@ -142,6 +143,8 @@ $(document).ready(function () {
             .then(function (data) {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
+                    var goalId = data[i].id
+                    getCharts(goalId)
                     $("#goals-go-here").append(`
                     <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
                     <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
@@ -200,6 +203,8 @@ $(document).ready(function () {
         }).then(function (data) {
             console.log(data);
             location.reload();
+
         });
     };
 });
+
