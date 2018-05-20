@@ -56,8 +56,7 @@ window.onload = function () {
         e.stopPropagation();
         firebase.auth().signOut();
     });
-}
-
+};
 
 //Sets up jQuery, on DOM load
 $(document).ready(function () {
@@ -65,16 +64,15 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            console.log(user)
-            renderPage(user)
+            console.log(user);
+            renderPage(user);
             //Create new goal click listener
         } else {
             // User is signed out.
             // ...
-            $("#welcome").html("You are Signed Out!")
+            $("#welcome").html("You are Signed Out!");
         }
     });
-
 
     //Our big fat render page function, uses 'user' object returned from Firebase Auth
     var renderPage = function (userObject) {
@@ -101,7 +99,7 @@ $(document).ready(function () {
                 goalId: $(this).data('id'),
                 activityName: $(this).data('activity'),
             };
-            console.log('activObj: '+ activityObj)
+            console.log('activObj: '+ activityObj);
             logActivity(activityObj);
         });
 
@@ -110,7 +108,7 @@ $(document).ready(function () {
             console.log("delete click");
             event.preventDefault();
             var goalId = $(this).data('id');
-            console.log('delete id: ' + goalId)
+            console.log('delete id: ' + goalId);
             deleteGoal(goalId);
         });
 
@@ -122,8 +120,8 @@ $(document).ready(function () {
             var completeObj = {
                 id: $(this).data("id"),
             };
-            markComplete(completeObj, id)
-        })
+            markComplete(completeObj, id);
+        });
         //Edit Goal Listener
         $(document).on("click", ".edit-goal", function (event) {
             event.preventDefault();
@@ -133,18 +131,17 @@ $(document).ready(function () {
                 goalName: $("#goal-name").val().trim()
             };
             updateGoal(goalObj, id);
-        })
-    }
-
+        });
+    };
 
     //************************** AJAX functions ******************************//
 
     //GET all Goals for a user after login:
     var getGoals = function (id) {
-        console.log(id)
-        $.get("/api/goals/"+id,)
+        console.log(id);
+        $.get("/api/goals/"+id)
             .then(function (data) {
-                console.log(data)
+                console.log(data);
                 for (var i = 0; i < data.length; i++) {
                     var goalId = data[i].id
                     getCharts(goalId)
@@ -154,10 +151,10 @@ $(document).ready(function () {
                     <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
                     <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
                     </li>
-                    `)
+                    `);
                 }
-            })
-    }
+            });
+    };
 
     //POST function for new goals
     var newGoal = function (goalInfo) {
@@ -165,8 +162,8 @@ $(document).ready(function () {
             .then(function (data) {
                 console.log("New Goal:" + data);
                 location.reload();
-            })
-    }
+            });
+    };
 
     //POST function for logging activity
     var logActivity = function (activity) {
@@ -174,18 +171,18 @@ $(document).ready(function () {
             .then(function (data) {
                 console.log("Track:" + data);
                 location.reload();
-            })
-    }
+            });
+    };
 
     var deleteGoal = function (id) {
         $.ajax({
             method: "DELETE",
             url: "/api/goals/" + id
         }).then(function (data) {
-            console.log("Delete: " + data)
+            console.log("Delete: " + data);
             location.reload();
-        })
-    }
+        });
+    };
 
     var markComplete = function (complete, id) {
         $.ajax({
@@ -193,10 +190,10 @@ $(document).ready(function () {
             url: "/api/goals/complete" + id,
             data: complete
         }).then(function (data) {
-            console.log(data)
+            console.log(data);
             location.reload();
-        })
-    }
+        });
+    };
 
     var updateGoal = function (edit, id) {
         $.ajax({
@@ -204,70 +201,10 @@ $(document).ready(function () {
             url: "/api/goals/" + id,
             data: edit
         }).then(function (data) {
-            console.log(data)
+            console.log(data);
             location.reload();
-        })
-    }
 
-    var getCharts = function (id) {
-        $.get("/api/activities/"+id,)
-        .then(function (data) {
-            console.log(data)
-
-            for (i= 0; i < data.length; i++) {
-                var m = data[i].createdAt
-                console.log('created at: '+ m);
-                var mon = moment(m).month();
-                console.log('month: ' + mon)
-                for (n= 0; n < graphData.length; n++){
-                    if (mon == n) {
-                        graphData[n]++;
-                    }
-                }
-            }
-            console.log('chartdata: ' + graphData)
-            var ctx = $("#myChart");
-            ctx.height = 100;
-            var myChart = new Chart (ctx, {
-                type: 'bar',
-                type: 'line',
-                data: {
-                  labels: months,
-                  datasets: [
-                    { 
-                      data: graphData
-                    }
-                  ]
-                },
-                options: {
-                    responsive: true,
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: false,
-                        text: 'Chart.js bar Chart'
-                    },
-                    animation: {
-                        animateScale: true
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                callback: function (value) { if (Number.isInteger(value)) { return value; } },
-                                stepSize: 1
-                            }
-                        }]
-                    }
-                }
-            })
-        })
-    }
+        });
+    };
 });
-
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October','November','December']
-var graphData = [0,0,0,0,0,0,0,0,0,0,0,0,]
-
-
 

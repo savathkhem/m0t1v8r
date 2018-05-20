@@ -1,21 +1,10 @@
-body {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bree Serif', serif;
 }
 
 header.masthead {
   position: relative;
-  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
-  background-color:#343a40;
+  background: url("../images/bg-masthead.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -39,10 +28,10 @@ header.masthead h1 {
 }
 
 @media (min-width: 768px) {
-  /* header.masthead {
+  header.masthead {
     padding-top: 12rem;
     padding-bottom: 12rem;
-  } */
+  }
   header.masthead h1 {
     font-size: 3rem;
   }
@@ -100,8 +89,7 @@ header.masthead h1 {
 
 .call-to-action {
   position: relative;
-  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
-  background-color:#343a40;
+  background: url("../images/bg-masthead.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
