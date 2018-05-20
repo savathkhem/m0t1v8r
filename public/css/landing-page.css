@@ -14,19 +14,19 @@ h6 {
 
 header.masthead {
   position: relative;
-  background-color: #343a40;
-  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
+  background-color:#343a40;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 header.masthead .overlay {
   position: absolute;
-  background-color: #212529;
+  
   height: 100%;
   width: 100%;
   top: 0;
@@ -39,10 +39,10 @@ header.masthead h1 {
 }
 
 @media (min-width: 768px) {
-  header.masthead {
+  /* header.masthead {
     padding-top: 12rem;
     padding-bottom: 12rem;
-  }
+  } */
   header.masthead h1 {
     font-size: 3rem;
   }
@@ -100,8 +100,8 @@ header.masthead h1 {
 
 .call-to-action {
   position: relative;
-  background-color: #343a40;
-  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  /* background: url("../images/bg-masthead.jpg") no-repeat center center; */
+  background-color:#343a40;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -112,7 +112,7 @@ header.masthead h1 {
 
 .call-to-action .overlay {
   position: absolute;
-  background-color: #212529;
+  
   height: 100%;
   width: 100%;
   top: 0;
@@ -123,4 +123,47 @@ header.masthead h1 {
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+.carousel-indicators .active {
+  background-color: #007bff;
+}
+
+.carousel-indicators li {
+  background-color: #212529;
+}
+
+.carousel-indicators:hover {
+  color: #007bff;
+}
+
+.carousel-control-next-icon {
+  background-color: #212529;
+}
+
+.carousel-inner {
+  width: 50%
+}
+
+.material-icons {
+  font-size: 3em;
+  color: #212529
+}
+
+.material-icons:hover {
+  font-size: 3em;
+  color: #007bff
+}
+
+.carousel-inner {
+  width:30%
+}
+
+.card {
+  border:0;
+}
+
+.nav-link a:hover {
+  color: #007bff;
+  font-weight: 300;
 }

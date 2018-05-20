@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>😊😊😊😊</title>
+<head>
 
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-        <link rel="stylesheet" href="../css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <title>User Page</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
 
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Titan+One" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -28,48 +25,69 @@
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="/js/index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    </head>
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 
-    <body>
-        <nav>
-            <div class="nav-wrapper grey darken-3">
-                <span class="brand-logo" style="color: #ff5722" id = "welcome"></span>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>
-                        <a href="">ABOUT</a>
+    <!-- Custom styles for this template -->
+    <link href="../css/landing-page.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="../js/index.js"></script>
+
+    <link href="../css/logo.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <span class="navbar-brand" href="#" style="font-family: Pacifico; color: #007bff">M0T1V8R</span>
+            <span class="brand-logo" style="color: #ff5722" id="welcome"></span>
+            <div class="collapse navbar-collapse d-flex justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#settings">Settings</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#logout" id="sign-out">Sign Out</a>
                     </li>
                 </ul>
-                <div class="fixed-action-btn">
-                    <a class="btn-floating btn-large red">
-                        <i class="large material-icons">mode_edit</i>
-                    </a>
-                    <ul>
-                        <li>
-                            <a class="btn-floating red">
-                                <i class="material-icons">insert_chart</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="btn-floating yellow darken-1">
-                                <i class="material-icons">format_quote</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="btn-floating green">
-                                <i class="material-icons">publish</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="btn-floating blue">
-                                <i class="material-icons">attach_file</i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </nav>
-        <div class = "container">
+        </div>
+    </nav>
+
+    <!-- MORGAN FREEMAN MORGAN FREEMAN MORGAN FREEMAN MORGAN FREEMAN -->
+    <div class="container">
+        <div class="col">
+        <img style="width:10%; height:10%;" src="http://www.gstatic.com/tv/thumb/persons/47162/47162_v9_bb.jpg">
+    </div>
+    <div class="col">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat sit, obcaecati dolorum laboriosam labore velit qui, sapiente aliquam assumenda sint commodi blanditiis eaque est illo magnam quod quae exercitationem quas ea explicabo unde optio nesciunt! Laborum, eius facere quisquam ad ab sequi asperiores natus corporis facilis, alias magni incidunt exercitationem?</p>
+    </div>
+        
+    </div>
+
+
+
+    <!-- <div class = "container">
                 <ul>
                         <li><h4>Goal:</h4>
                             <input id="goal-name" type="text"></input>
@@ -85,11 +103,172 @@
                                 <button id="submit-goal" type="submit">Submit</button>
                             </li>
 
+                    </ul>-->
+    <!-- <div id="goals-go-here"></div> -->
+
+
+
+
+    <!-- Goals -->
+    <div class="row">
+        <div class="col-md-9 mx-auto">
+            <div class="card card-tasks">
+                <div class="card-header">
+                    <button class="card-category breeSerif float-right" data-toggle="modal" data-target="#newGoal">New Goal</button>
+                    <h6 class="card-category breeSerif">List of Goals</h6>
+                    <h4 class="card-title breeSerif text-center">Goals</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-full-width table-responsive">
+                        <table class="table">
+                            <tbody>
+
+                                <!-- goals go here -->
+                                <div id="goals-go-here"></div>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <img src="https://www.highcharts.com/images/docs/line.png">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- New Goal Modal -->
+    <div class="modal fade" id="newGoal" tabindex="-1" role="dialog" aria-labelledby="newGoalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newGoalLabel">New Goal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Goal Name:</label>
+                            <input type="text" class="form-control" id="goal-name" placeholder="Enter goal name here" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="activity">Activity:</label>
+                            <input type="text" class="form-control" id="activity-name" placeholder="Enter activity here" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time To Receive Text:</label>
+                            <select class="form-control" id="remind-me">
+                                <option>7am</option>
+                                <option>8am</option>
+                                <option>9am</option>
+                                <option>10am</option>
+                                <option>11am</option>
+                                <option>12pm</option>
+                                <option>1pm</option>
+                                <option>2pm</option>
+                                <option>3pm</option>
+                                <option>4pm</option>
+                                <option>5pm</option>
+                                <option>6pm</option>
+                                <option>7pm</option>
+                                <option>8pm</option>
+                                <option>9pm</option>
+                                <option>10pm</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit-goal">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Setting Modal -->
+    <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsLabel">Settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                            <small id="nameHelp" class="form-text text-muted">This is the name you'd like us to refer you to you as.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="number" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('#newGoal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        });
+    </script>
+
+
+    <!-- Footer -->
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; M0T1V8R 2018. All Rights Reserved. Special thanks to Bootstrap for the template.</p>
+                </div>
+                <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a href="https://github.com/savathkhem/m0t1v8r">
+                                <i class="fab fa-github fa-2x fa-fw"></i>
+                            </a>
+                        </li>
                     </ul>
                     <div id= "goals-go-here"></div>
 
                     <canvas id="myChart" width="400" height="100"></canvas>
                     <button id = "sign-out">Sign OUT!</button>
+                </div>
+            </div>
         </div>
-    </body>
+    </footer>
+
+    <script type="text/javascript">
+        var $root = $('html, body');
+
+        $('a[href^="#"]').click(function () {
+            $root.animate({
+                scrollTop: $($.attr(this, 'href')).offset().top
+            }, 800);
+            return false;
+        });
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </div>
+
+</body>
+
 </html>
