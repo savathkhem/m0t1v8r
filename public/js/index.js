@@ -55,8 +55,7 @@ window.onload = function () {
         e.stopPropagation();
         firebase.auth().signOut();
     });
-}
-
+};
 
 //Sets up jQuery, on DOM load
 $(document).ready(function () {
@@ -64,16 +63,15 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            console.log(user)
-            renderPage(user)
+            console.log(user);
+            renderPage(user);
             //Create new goal click listener
         } else {
             // User is signed out.
             // ...
-            $("#welcome").html("You are Signed Out!")
+            $("#welcome").html("You are Signed Out!");
         }
     });
-
 
     //Our big fat render page function, uses 'user' object returned from Firebase Auth
     var renderPage = function (userObject) {
@@ -100,7 +98,7 @@ $(document).ready(function () {
                 goalId: $(this).data('id'),
                 activityName: $(this).data('activity'),
             };
-            console.log('activObj: '+ activityObj)
+            console.log('activObj: '+ activityObj);
             logActivity(activityObj);
         });
 
@@ -109,7 +107,7 @@ $(document).ready(function () {
             console.log("delete click");
             event.preventDefault();
             var goalId = $(this).data('id');
-            console.log('delete id: ' + goalId)
+            console.log('delete id: ' + goalId);
             deleteGoal(goalId);
         });
 
@@ -121,8 +119,8 @@ $(document).ready(function () {
             var completeObj = {
                 id: $(this).data("id"),
             };
-            markComplete(completeObj, id)
-        })
+            markComplete(completeObj, id);
+        });
         //Edit Goal Listener
         $(document).on("click", ".edit-goal", function (event) {
             event.preventDefault();
@@ -132,18 +130,17 @@ $(document).ready(function () {
                 goalName: $("#goal-name").val().trim()
             };
             updateGoal(goalObj, id);
-        })
-    }
-
+        });
+    };
 
     //************************** AJAX functions ******************************//
 
     //GET all Goals for a user after login:
     var getGoals = function (id) {
-        console.log(id)
-        $.get("/api/goals/"+id,)
+        console.log(id);
+        $.get("/api/goals/"+id)
             .then(function (data) {
-                console.log(data)
+                console.log(data);
                 for (var i = 0; i < data.length; i++) {
                     $("#goals-go-here").append(`
                     <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
@@ -151,10 +148,10 @@ $(document).ready(function () {
                     <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
                     <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
                     </li>
-                    `)
+                    `);
                 }
-            })
-    }
+            });
+    };
 
     //POST function for new goals
     var newGoal = function (goalInfo) {
@@ -162,8 +159,8 @@ $(document).ready(function () {
             .then(function (data) {
                 console.log("New Goal:" + data);
                 location.reload();
-            })
-    }
+            });
+    };
 
     //POST function for logging activity
     var logActivity = function (activity) {
@@ -171,18 +168,18 @@ $(document).ready(function () {
             .then(function (data) {
                 console.log("Track:" + data);
                 location.reload();
-            })
-    }
+            });
+    };
 
     var deleteGoal = function (id) {
         $.ajax({
             method: "DELETE",
             url: "/api/goals/" + id
         }).then(function (data) {
-            console.log("Delete: " + data)
+            console.log("Delete: " + data);
             location.reload();
-        })
-    }
+        });
+    };
 
     var markComplete = function (complete, id) {
         $.ajax({
@@ -190,10 +187,10 @@ $(document).ready(function () {
             url: "/api/goals/complete" + id,
             data: complete
         }).then(function (data) {
-            console.log(data)
+            console.log(data);
             location.reload();
-        })
-    }
+        });
+    };
 
     var updateGoal = function (edit, id) {
         $.ajax({
@@ -201,8 +198,8 @@ $(document).ready(function () {
             url: "/api/goals/" + id,
             data: edit
         }).then(function (data) {
-            console.log(data)
+            console.log(data);
             location.reload();
-        })
-    }
+        });
+    };
 });
