@@ -1,3 +1,4 @@
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyByRhhek59x3vV1xPtrpXQkyk4yCmSkEC0",
@@ -145,6 +146,8 @@ $(document).ready(function () {
             .then(function (data) {
                 console.log(data)
                 for (var i = 0; i < data.length; i++) {
+                    var goalId = data[i].id
+                    getCharts(goalId)
                     $("#goals-go-here").append(`
                     <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
                     <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
@@ -205,5 +208,66 @@ $(document).ready(function () {
             location.reload();
         })
     }
+
+    var getCharts = function (id) {
+        $.get("/api/activities/"+id,)
+        .then(function (data) {
+            console.log(data)
+
+            for (i= 0; i < data.length; i++) {
+                var m = data[i].createdAt
+                console.log('created at: '+ m);
+                var mon = moment(m).month();
+                console.log('month: ' + mon)
+                for (n= 0; n < graphData.length; n++){
+                    if (mon == n) {
+                        graphData[n]++;
+                    }
+                }
+            }
+            console.log('chartdata: ' + graphData)
+            var ctx = $("#myChart");
+            ctx.height = 100;
+            var myChart = new Chart (ctx, {
+                type: 'bar',
+                type: 'line',
+                data: {
+                  labels: months,
+                  datasets: [
+                    { 
+                      data: graphData
+                    }
+                  ]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js bar Chart'
+                    },
+                    animation: {
+                        animateScale: true
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function (value) { if (Number.isInteger(value)) { return value; } },
+                                stepSize: 1
+                            }
+                        }]
+                    }
+                }
+            })
+        })
+    }
 });
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October','November','December']
+var graphData = [0,0,0,0,0,0,0,0,0,0,0,0,]
+
+
 
