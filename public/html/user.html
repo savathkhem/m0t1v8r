@@ -266,7 +266,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="settingsLabel">Settings</h5>
+                        <h5 class="modal-title" id="settingsLabel">My Settings</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -275,18 +275,18 @@
                         <form>
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
                                 <small id="nameHelp" class="form-text text-muted">This is the name you'd like us to refer you to you as.</small>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="number" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx">
+                                <input type="number" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx" required>
+                                <small id="phoneMsg" class="form-text text-muted">The mobile number you'd like to receive reminders.</small>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit-new-user">Submit</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
