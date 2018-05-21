@@ -17,8 +17,8 @@ module.exports = function (app) {
 
   // GET route for getting all of the activities
   app.get("/api/activities/:goalId", function (req, res) {
-    var id = req.params.goalId
-    console.log(req.params.goalId)
+    var id = req.params.goalId;
+    console.log(req.params.goalId);
     db.Activity.findAll({
       where: { goalId: id },
       //   include: [db.User]
@@ -49,7 +49,7 @@ module.exports = function (app) {
 
   // POST route for saving activities
   app.post("/api/goals/track", function (req, res) {
-    console.log(JSON.stringify(req.body))
+    console.log(JSON.stringify(req.body));
     db.Activity.create(req.body).then(function (activity) {
       res.json(activity);
     });
