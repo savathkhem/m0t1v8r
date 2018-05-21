@@ -181,6 +181,7 @@ $(document).ready(function () {
                     console.log([i] + ': for get goal: ' + data[i].goalName);
                     var goalId = data[i].id;
                     getCharts(data[i]);
+                    getDropDown(data[i]);
                     if (data[i].completed == 0) {
                         $("#goals-go-here").append(`
                         <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
@@ -209,6 +210,18 @@ $(document).ready(function () {
             location.reload();
         })
     }
+
+    //GET all Drop Down for a user after login:
+    var getDropDown = function (data) {
+        // for (var i = 0; i < data.length; i++) {
+            console.log(data);
+            var goalId = data.id;
+            $("#dropdowns-go-here").append(`
+                <a class="dropdown-item text-danger" href="#">Goal Id: ${data.id}    |   Goal: ${data.goalName}</a>
+            `);
+        // }
+    };
+
 
     //POST function for new goals
     var newGoal = function (goalInfo) {
@@ -264,22 +277,23 @@ $(document).ready(function () {
 
     var getCharts = function (goal) {
         $("#charts-go-here").append(`<canvas id="myChart${goal.id}" width="400" height="200"></canvas>`)
-        $.get("/api/activities/"+goal.id)
-        .then(function (data) {
-            console.log("get charts:");
-            console.log(data);
-            //chartData will hold our chart's datasets
-            var chartData = []
-            //Starting values for data array:
-            var graphData = [0,0,0,0,0,0,0,0,0,0,0,0,];
-            for (i= 0; i < data.length; i++) {
-                var m = data[i].createdAt;
-                console.log('created at: '+ m);
-                var mon = moment(m).month();
-                console.log('month: ' + mon);
-                for (n= 0; n < graphData.length; n++){
-                    if (mon == n) {
-                        graphData[n]++;
+        $.get("/api/activities/" + goal.id)
+            .then(function (data) {
+                console.log("get charts:");
+                console.log(data);
+                //chartData will hold our chart's datasets
+                var chartData = []
+                //Starting values for data array:
+                var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ];
+                for (i = 0; i < data.length; i++) {
+                    var m = data[i].createdAt;
+                    console.log('created at: ' + m);
+                    var mon = moment(m).month();
+                    console.log('month: ' + mon);
+                    for (n = 0; n < graphData.length; n++) {
+                        if (mon == n) {
+                            graphData[n]++;
+                        }
                     }
                 }
             }
@@ -312,23 +326,32 @@ $(document).ready(function () {
                         display: true,
                         text: 'Activity Log'
                     },
-                    animation: {
-                        animateScale: true
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                callback: function (value) { if (Number.isInteger(value)) { return value; } },
-                            },
-                        }]
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Activity Log'
+                        },
+                        animation: {
+                            animateScale: true
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback: function (value) {
+                                        if (Number.isInteger(value)) {
+                                            return value;
+                                        }
+                                    },
+                                },
+                            }]
+                        }
                     }
-                }
+                });
             });
-        });
     };
 });
 
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October','November','December'];
-var lineColors = ['#FF0000','#FFFF00','#00FF00','#00FFFF','#0000FF','#FF00FF',]
-
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', ]

@@ -5,33 +5,22 @@
   #logo{
     color: #fff;
     font-family: Pacifico;
-    -webkit-animation: none;
-    -moz-animation: none;
     font-size: 5em;
     margin: 20px 0 20px 0;
   }
   
-  a {
-    text-decoration: none;
+  #logo a {
+    color: #007bff;
+    font-family: Pacifico;
+    animation: neon2 1s ease-in-out infinite alternate;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
   }
   
-  #logo a {
-    color:#343a40;
-    font-family: Pacifico;
-    -webkit-animation: none;
-    -moz-animation: none;
-    animation: neon1 10s ease-in-out infinite alternate;
-  }
-  
   #logo a:hover {
-    color: #007bff;
-    -webkit-animation: none;
-    -moz-animation: none;
-    animation: none;
-    animation: neon2 1s ease-in-out infinite alternate;
+    color:#343a40;
+    animation: neon1 5s ease-in-out infinite alternate;
   }
   
   
