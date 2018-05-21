@@ -1,4 +1,3 @@
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyByRhhek59x3vV1xPtrpXQkyk4yCmSkEC0",
@@ -55,6 +54,7 @@ window.onload = function () {
         e.preventDefault();
         e.stopPropagation();
         firebase.auth().signOut();
+        window.location.replace("/");
     });
 };
 
@@ -232,7 +232,6 @@ $(document).ready(function () {
             var ctx = $("#myChart");
             ctx.height = 100;
             var myChart = new Chart (ctx, {
-                type: 'bar',
                 type: 'line',
                 data: {
                   labels: months,
