@@ -54,7 +54,9 @@ window.onload = function () {
         e.preventDefault();
         e.stopPropagation();
         firebase.auth().signOut();
-        window.location.replace("/");
+        setTimeout(function() {
+            window.location.replace("/");
+        }, 1000);
     });
 };
 
