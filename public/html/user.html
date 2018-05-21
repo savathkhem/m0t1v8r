@@ -22,7 +22,6 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="/js/index.js"></script>
 
     <!-- BOOTSTRAP -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -83,9 +82,8 @@
     <!-- MORGAN FREEMAN MORGAN FREEMAN MORGAN FREEMAN MORGAN FREEMAN -->
     <div class="container">
         <div class="row">
-            <div class="col col-lg-2">
-                <!-- PROFILE PIC -->
-                <img style="width:70%" src="http://www.gstatic.com/tv/thumb/persons/47162/47162_v9_bb.jpg">
+            <div class="col col-lg-2" id = "user-pic">
+                <!-- PROFILE PIC dynamic-->
             </div>
             <div class="col col-sm-8">
                 <!-- PROFILE DESCRIPTION -->
@@ -128,10 +126,10 @@
                         <h4 class="card-title breeSerif text-center">Goals</h4>
                     </div>
                     <div class="card-body">
+                            <div id="goals-go-here"></div>
                         <div class="table-full-width table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <div id="goals-go-here"></div>
                                 </tbody>
                             </table>
                         </div>
@@ -201,22 +199,22 @@
                         <div class="form-group">
                             <label for="time">Time To Receive Text:</label>
                             <select class="form-control" id="remind-me">
-                                <option>7am</option>
-                                <option>8am</option>
-                                <option>9am</option>
-                                <option>10am</option>
-                                <option>11am</option>
-                                <option>12pm</option>
-                                <option>1pm</option>
-                                <option>2pm</option>
-                                <option>3pm</option>
-                                <option>4pm</option>
-                                <option>5pm</option>
-                                <option>6pm</option>
-                                <option>7pm</option>
-                                <option>8pm</option>
-                                <option>9pm</option>
-                                <option>10pm</option>
+                                <option value ="7">7am</option>
+                                <option value ="8">8am</option>
+                                <option value ="9">9am</option>
+                                <option value ="10">10am</option>
+                                <option value ="11">11am</option>
+                                <option value ="12">12pm</option>
+                                <option value ="13">1pm</option>
+                                <option value ="14">2pm</option>
+                                <option value ="15">3pm</option>
+                                <option value ="16">4pm</option>
+                                <option value ="17">5pm</option>
+                                <option value ="18">6pm</option>
+                                <option value ="19">7pm</option>
+                                <option value ="20">8pm</option>
+                                <option value ="21">9pm</option>
+                                <option value ="22">10pm</option>
                             </select>
                         </div>
                     </form>
@@ -260,7 +258,7 @@
             </div>
         </div>
 
-        <script>
+        <!-- <script>
             //Click Listeners
             $(document).on("click", "#submit-goal", function (event) {
                 event.preventDefault();
@@ -272,7 +270,7 @@
                 };
                 newGoal(goalObj);
             });
-        </script>
+        </script> -->
     </div>
 
     <script type="text/javascript">
