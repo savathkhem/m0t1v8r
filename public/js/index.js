@@ -214,10 +214,10 @@ $(document).ready(function () {
     //GET all Drop Down for a user after login:
     var getDropDown = function (data) {
         // for (var i = 0; i < data.length; i++) {
-        console.log(data);
-        var goalId = data.id;
-        $("#dropdowns-go-here").append(`
-                <a class="dropdown-item text-danger" href="#">Goal Id: ${data.id}    |   Goal: ${data.goalName}</a>
+            console.log(data);
+            var goalId = data.id;
+            $("#dropdowns-go-here").append(`
+                <a class="dropdown-item text-danger" href="#">Goal: ${data.goalName}</a>
             `);
         // }
     };
