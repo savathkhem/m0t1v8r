@@ -176,7 +176,7 @@ $(document).ready(function () {
             console.log(data);
             var goalId = data.id;
             $("#dropdowns-go-here").append(`
-                <a class="dropdown-item text-danger" href="#">Goal Id: ${data.id}    |   Goal: ${data.goalName}</a>
+                <a class="dropdown-item text-danger" href="#">Goal: ${data.goalName}</a>
             `);
         // }
     };

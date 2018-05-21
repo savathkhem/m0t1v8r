@@ -23,7 +23,6 @@
     animation: neon1 5s ease-in-out infinite alternate;
   }
   
-  
   @-webkit-keyframes neon1 {
     from {
         text-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #343a40, 0 0 70px #343a40, 0 0 80px #343a40, 0 0 100px #343a40, 0 0 150px #343a40;
@@ -33,9 +32,7 @@
       }
     }
   
-  
   /*glow*/
-  
   @keyframes neon1 {
     from {
       text-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #343a40, 0 0 70px #343a40, 0 0 80px #343a40, 0 0 100px #343a40, 0 0 150px #343a40;
