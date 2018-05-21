@@ -238,7 +238,17 @@ $(document).ready(function () {
                   labels: months,
                   datasets: [
                     { 
-                      data: graphData
+                      data: graphData,                      
+                      label: "Goal Activity",
+                      borderColor: "#18ce0f",
+                      backgroundColor: "#b5d0fc",
+                    //   pointBorderColor: "#FFF",
+                      pointBackgroundColor: "#18ce0f",
+                      pointBorderWidth: 2,
+                      pointHoverRadius: 4,
+                      pointHoverBorderWidth: 1,
+                    //   pointRadius: 4,
+                      fill: true,
                     }
                   ]
                 },
@@ -259,8 +269,7 @@ $(document).ready(function () {
                             ticks: {
                                 beginAtZero: true,
                                 callback: function (value) { if (Number.isInteger(value)) { return value; } },
-                                stepSize: 1
-                            }
+                            },
                         }]
                     }
                 }
