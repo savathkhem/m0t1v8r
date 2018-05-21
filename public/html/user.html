@@ -14,35 +14,34 @@
 
         <!-- Jquery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-
-        <!-- Charts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
+    
         <!-- Custom fonts for this template -->
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
+    
         <!-- Icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-            crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
-
+    
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-
+    
         <!-- Our JS -->
         <script src="../js/index.js"></script>
-
+    
         <!-- Our Styles -->
         <link href="../css/style.css" rel="stylesheet" type="text/css">
         <link href="../css/logo.css" rel="stylesheet" type="text/css">
         <link href="../css/landing-page.css" rel="stylesheet">
 
+        <!-- Chart.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
     </head>
     <body>
 
@@ -56,7 +55,6 @@
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="modal" data-target="#settings">Settings</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="modal" data-target="#logout" id="sign-out" href="/">Sign Out</a>
                         </li>
@@ -104,16 +102,13 @@
         <div class="container">
             <div class="row">
 
-
-            <!-- COL 1 -->
-            <div class="col col-md-6" style="
-            padding-bottom: 20px;">
-                <div class="card card-tasks">
-                    <div class="card-header">
-                        <button class="card-category breeSerif float-right" data-toggle="modal" data-target="#newGoal">New Goal</button>
-                        <h5 class="card-category">Goals</h5>
-                    </div>
-
+                <!-- COL 1 -->
+                <div class="col col-md-6">
+                    <div class="card card-tasks">
+                        <div class="card-header">
+                            <button class="card-category breeSerif float-right" data-toggle="modal" data-target="#newGoal">New Goal</button>
+                            <h5 class="card-category">Goals</h5>
+                        </div>
                         <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -195,7 +190,6 @@
                             <h5 class="card-category">Charts</h5>
                         </div>
                         <div class="card-body">
-
                             <div class="chart-area">
                                 <div class="table-full-width table-responsive">
                                     <table class="table">
@@ -205,7 +199,6 @@
                                 </div>
                                 <canvas id="myChart" width="400" height="200"></canvas>
                             </div>
-
                         </div>
                         <div class="card-footer">
                             <div class="stats">
@@ -214,7 +207,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -329,7 +321,6 @@
 
         <script type="text/javascript">
             var $root = $('html, body');
-
             $('a[href^="#"]').click(function () {
                 $root.animate({
                     scrollTop: $($.attr(this, 'href')).offset().top
@@ -338,8 +329,9 @@
             });
         </script>
 
-        <!-- Bootstrap core JavaScript -->
+        <!-- JS Stuff -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="../js/graph.js"></script>
         
     </body>
 </html>
