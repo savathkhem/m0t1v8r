@@ -1,4 +1,3 @@
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyByRhhek59x3vV1xPtrpXQkyk4yCmSkEC0",
@@ -96,13 +95,13 @@ $(document).ready(function () {
             newGoal(goalObj);
         });
         //Track Activity click listener
-        $(document).on("click",".submit-activity", function (event) {
+        $(document).on("click", ".submit-activity", function (event) {
             event.preventDefault();
             var activityObj = {
                 goalId: $(this).data('id'),
                 activityName: $(this).data('activity'),
             };
-            console.log('activObj: '+ activityObj);
+            console.log('activObj: ' + activityObj);
             logActivity(activityObj);
         });
 
@@ -119,7 +118,7 @@ $(document).ready(function () {
         $(document).on("click", ".mark-complete", function (event) {
             console.log("complete click");
             event.preventDefault();
-            var id = "";//TBD Grab from oAuth...
+            var id = ""; //TBD Grab from oAuth...
             var completeObj = {
                 id: $(this).data("id"),
             };
@@ -128,7 +127,7 @@ $(document).ready(function () {
         //Edit Goal Listener
         $(document).on("click", ".edit-goal", function (event) {
             event.preventDefault();
-            var id = "";//TBD Grab from oAuth...
+            var id = ""; //TBD Grab from oAuth...
             var goalObj = {
                 id: $(this).data("id"),
                 goalName: $("#goal-name").val().trim()
@@ -142,20 +141,37 @@ $(document).ready(function () {
     //GET all Goals for a user after login:
     var getGoals = function (id) {
         console.log(id);
-        $.get("/api/goals/"+id)
+        $.get("/api/goals/" + id)
             .then(function (data) {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
-                    console.log([i]+': for get goal: ' + data[i].goalName);
+                    console.log([i] + ': for get goal: ' + data[i].goalName);
                     var goalId = data[i].id;
                     getCharts(goalId);
-                    $("#goals-go-here").append(`
-                    <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
-                    <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
-                    <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
-                    <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
-                    </li>
-                    `);
+                    if (data[i].completed == 0) {
+                        $("#goals-go-here").append(`
+                        <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
+                        <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
+                        <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
+                        <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                        </li>
+                        `);
+                    } else if (data[i].completed == 1) {
+                        $("#completed-go-here").append(`
+                        <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
+                        <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
+                        <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
+                        <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                        </li>
+                        `);
+                    }
+                    // $("#goals-go-here").append(`
+                    // <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
+                    // <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
+                    // <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
+                    // <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                    // </li>
+                    // `);
                 }
             });
     };
@@ -213,62 +229,63 @@ $(document).ready(function () {
     };
 
     var getCharts = function (id) {
-        $.get("/api/activities/"+id)
-        .then(function (data) {
-            console.log(data);
+        $.get("/api/activities/" + id)
+            .then(function (data) {
+                console.log(data);
 
-            for (i= 0; i < data.length; i++) {
-                var m = data[i].createdAt;
-                console.log('created at: '+ m);
-                var mon = moment(m).month();
-                console.log('month: ' + mon);
-                for (n= 0; n < graphData.length; n++){
-                    if (mon == n) {
-                        graphData[n]++;
+                for (i = 0; i < data.length; i++) {
+                    var m = data[i].createdAt;
+                    console.log('created at: ' + m);
+                    var mon = moment(m).month();
+                    console.log('month: ' + mon);
+                    for (n = 0; n < graphData.length; n++) {
+                        if (mon == n) {
+                            graphData[n]++;
+                        }
                     }
                 }
-            }
-            console.log('chartdata: ' + graphData);
-            var ctx = $("#myChart");
-            ctx.height = 100;
-            var myChart = new Chart (ctx, {
-                type: 'bar',
-                type: 'line',
-                data: {
-                  labels: months,
-                  datasets: [
-                    { 
-                      data: graphData
-                    }
-                  ]
-                },
-                options: {
-                    responsive: true,
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: false,
-                        text: 'Chart.js bar Chart'
-                    },
-                    animation: {
-                        animateScale: true
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                callback: function (value) { if (Number.isInteger(value)) { return value; } },
-                                stepSize: 1
-                            }
+                console.log('chartdata: ' + graphData);
+                var ctx = $("#myChart");
+                ctx.height = 100;
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    type: 'line',
+                    data: {
+                        labels: months,
+                        datasets: [{
+                            data: graphData
                         }]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: false,
+                            text: 'Chart.js bar Chart'
+                        },
+                        animation: {
+                            animateScale: true
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback: function (value) {
+                                        if (Number.isInteger(value)) {
+                                            return value;
+                                        }
+                                    },
+                                    stepSize: 1
+                                }
+                            }]
+                        }
                     }
-                }
+                });
             });
-        });
     };
 });
 
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October','November','December'];
-var graphData = [0,0,0,0,0,0,0,0,0,0,0,0,];
-
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ];
