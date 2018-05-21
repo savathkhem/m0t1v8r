@@ -31,6 +31,7 @@
     -webkit-animation: none;
     -moz-animation: none;
     animation: none;
+    animation: neon2 1s ease-in-out infinite alternate;
   }
   
   
@@ -52,6 +53,15 @@
     }
     to {
       text-shadow: 0 0 5px #007bff, 0 0 10px #007bff, 0 0 15px #007bff, 0 0 20px #343a40, 0 0 35px #343a40, 0 0 40px #343a40, 0 0 50px #343a40, 0 0 75px #343a40;
+    }
+  }
+
+  @keyframes neon2 {
+    from {
+      text-shadow: 0 0 10px #343a40, 0 0 20px #343a40, 0 0 30px #343a40, 0 0 40px #343a40, 0 0 70px #343a40, 0 0 80px #343a40, 0 0 100px #343a40, 0 0 150px #343a40;
+    }
+    to {
+      text-shadow: 0 0 5px #343a40, 0 0 10px #343a40, 0 0 15px #343a40, 0 0 20px #343a40, 0 0 35px #343a40, 0 0 40px #343a40, 0 0 50px #343a40, 0 0 75px #343a40;
     }
   }
   
