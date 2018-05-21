@@ -76,14 +76,17 @@ $(document).ready(function () {
 
     //Our big fat render page function, uses 'user' object returned from Firebase Auth
     var renderPage = function (userObject) {
+        console.log('render page')
         //Populate page with user info
         $("#welcome").html("Welcome " + userObject.displayName + "!");
+        $("#user-pic").html(`<img style="width:70%" src= "${userObject.photoURL}">`);
         //Retrieves goals from database
         getGoals(userObject.uid);
 
         //Click Listeners
         $(document).on("click", "#submit-goal", function (event) {
             event.preventDefault();
+            console.log("submit!")
             var goalObj = {
                 userId: userObject.uid,
                 goalName: $("#goal-name").val().trim(),
@@ -143,6 +146,7 @@ $(document).ready(function () {
             .then(function (data) {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
+                    console.log([i]+': for get goal: ' + data[i].goalName)
                     var goalId = data[i].id
                     getCharts(goalId)
                     $("#goals-go-here").append(`
@@ -158,6 +162,7 @@ $(document).ready(function () {
 
     //POST function for new goals
     var newGoal = function (goalInfo) {
+        console.log("ajax: POST NEW GOAL")
         $.post("/api/goals", goalInfo)
             .then(function (data) {
                 console.log("New Goal:" + data);
@@ -206,5 +211,64 @@ $(document).ready(function () {
 
         });
     };
+
+    var getCharts = function (id) {
+        $.get("/api/activities/"+id,)
+        .then(function (data) {
+            console.log(data)
+
+            for (i= 0; i < data.length; i++) {
+                var m = data[i].createdAt
+                console.log('created at: '+ m);
+                var mon = moment(m).month();
+                console.log('month: ' + mon)
+                for (n= 0; n < graphData.length; n++){
+                    if (mon == n) {
+                        graphData[n]++;
+                    }
+                }
+            }
+            console.log('chartdata: ' + graphData)
+            var ctx = $("#myChart");
+            ctx.height = 100;
+            var myChart = new Chart (ctx, {
+                type: 'bar',
+                type: 'line',
+                data: {
+                  labels: months,
+                  datasets: [
+                    { 
+                      data: graphData
+                    }
+                  ]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js bar Chart'
+                    },
+                    animation: {
+                        animateScale: true
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function (value) { if (Number.isInteger(value)) { return value; } },
+                                stepSize: 1
+                            }
+                        }]
+                    }
+                }
+            })
+        })
+    }
 });
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October','November','December']
+var graphData = [0,0,0,0,0,0,0,0,0,0,0,0,]
 
