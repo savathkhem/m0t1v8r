@@ -268,12 +268,9 @@ $(document).ready(function () {
                 },
                 options: {
                     responsive: true,
-                    legend: {
-                        display: false
-                    },
                     title: {
-                        display: false,
-                        text: 'Chart.js bar Chart'
+                        display: true,
+                        text: 'Activity Log'
                     },
                     animation: {
                         animateScale: true
@@ -286,8 +283,9 @@ $(document).ready(function () {
                             },
                         }]
                     }
-                });
+                }
             });
+        });
     };
 });
 
