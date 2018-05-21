@@ -76,6 +76,8 @@ $(document).ready(function () {
     //Our big fat render page function, uses 'user' object returned from Firebase Auth
     var renderPage = function (userObject) {
         console.log('render page');
+        //Check if user exists in db or not
+        getUsers(userObject.uid)
         //Populate page with user info
         $("#welcome").html("Welcome " + userObject.displayName + "!");
         $("#user-pic").html(`<img style="width:70%" src= "${userObject.photoURL}">`);
@@ -83,6 +85,20 @@ $(document).ready(function () {
         getGoals(userObject.uid);
 
         //Click Listeners
+        
+        //New User
+        $(document).on("click", "#submit-new-user", function (event) {
+            event.preventDefault();
+            console.log("submit!");
+            var userObj = {
+                userId: userObject.uid,
+                name: $("#name").val().trim(),
+                phoneNumber: $("#phoneNumber").val().trim(),
+            };
+            newUser(userObj);
+        });
+
+        //New Goal!
         $(document).on("click", "#submit-goal", function (event) {
             event.preventDefault();
             console.log("submit!");
@@ -138,6 +154,23 @@ $(document).ready(function () {
 
     //************************** AJAX functions ******************************//
 
+    //Get Users
+    var getUsers = function(id) {
+        $.get("/api/users/"+(id))
+        .then(function(data){
+            console.log(data)
+            if (data[0].name) {
+                console.log('User exists!')
+            }
+            else {
+                console.log('create a new user!')
+                //Opens modal for user to input settings
+                $("#settings").modal();
+            }
+        })
+    }
+
+
     //GET all Goals for a user after login:
     var getGoals = function (id) {
         console.log(id);
@@ -169,6 +202,14 @@ $(document).ready(function () {
                 }
             });
     };
+
+    //POST function for new user
+    var newUser = function (newUserObj) {
+        $.post('/api/users', newUserObj)
+        .then (function(data){
+            location.reload();
+        })
+    }
 
     //GET all Drop Down for a user after login:
     var getDropDown = function (data) {
@@ -255,27 +296,35 @@ $(document).ready(function () {
                         }
                     }
                 }
-                console.log('chartdata: ' + graphData);
-                var ctx = $(`#myChart${goal.id}`);
-                ctx.height = 100;
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    type: 'line',
-                    data: {
-                        labels: months,
-                        datasets: [{
-                            data: graphData,
-                            label: goal.goalName,
-                            borderColor: "#18ce0f",
-                            backgroundColor: "#b5d0fc",
-                            //   pointBorderColor: "#FFF",
-                            pointBackgroundColor: "#18ce0f",
-                            pointBorderWidth: 2,
-                            pointHoverRadius: 4,
-                            pointHoverBorderWidth: 1,
-                            //   pointRadius: 4,
-                            fill: true,
-                        }]
+            }
+            console.log('chartdata: ' + graphData);
+            var ctx = $(`#myChart${goal.id}`);
+            ctx.height = 100;
+            var myChart = new Chart (ctx, {
+                type: 'line',
+                data: {
+                  labels: months,
+                  datasets: [
+                    { 
+                      data: graphData,                      
+                      label: goal.goalName,
+                      borderColor: "#18ce0f",
+                      backgroundColor: "#b5d0fc",
+                    //   pointBorderColor: "#FFF",
+                      pointBackgroundColor: "#18ce0f",
+                      pointBorderWidth: 2,
+                      pointHoverRadius: 4,
+                      pointHoverBorderWidth: 1,
+                    //   pointRadius: 4,
+                      fill: true,
+                    }
+                  ]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Activity Log'
                     },
                     options: {
                         responsive: true,
