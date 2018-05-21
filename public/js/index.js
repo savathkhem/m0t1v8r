@@ -148,7 +148,7 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     console.log([i]+': for get goal: ' + data[i].goalName);
                     var goalId = data[i].id;
-                    getCharts(goalId);
+                    getCharts(data[i]);
                     $("#goals-go-here").append(`
                     <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
                     <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
@@ -212,11 +212,16 @@ $(document).ready(function () {
         });
     };
 
-    var getCharts = function (id) {
-        $.get("/api/activities/"+id)
+    var getCharts = function (goal) {
+        $("#charts-go-here").append(`<canvas id="myChart${goal.id}" width="400" height="200"></canvas>`)
+        $.get("/api/activities/"+goal.id)
         .then(function (data) {
+            console.log("get charts:");
             console.log(data);
-
+            //chartData will hold our chart's datasets
+            var chartData = []
+            //Starting values for data array:
+            var graphData = [0,0,0,0,0,0,0,0,0,0,0,0,];
             for (i= 0; i < data.length; i++) {
                 var m = data[i].createdAt;
                 console.log('created at: '+ m);
@@ -229,7 +234,7 @@ $(document).ready(function () {
                 }
             }
             console.log('chartdata: ' + graphData);
-            var ctx = $("#myChart");
+            var ctx = $(`#myChart${goal.id}`);
             ctx.height = 100;
             var myChart = new Chart (ctx, {
                 type: 'bar',
@@ -239,7 +244,7 @@ $(document).ready(function () {
                   datasets: [
                     { 
                       data: graphData,                      
-                      label: "Goal Activity",
+                      label: goal.goalName,
                       borderColor: "#18ce0f",
                       backgroundColor: "#b5d0fc",
                     //   pointBorderColor: "#FFF",
@@ -279,5 +284,5 @@ $(document).ready(function () {
 });
 
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October','November','December'];
-var graphData = [0,0,0,0,0,0,0,0,0,0,0,0,];
+var lineColors = ['#FF0000','#FFFF00','#00FF00','#00FFFF','#0000FF','#FF00FF',]
 
