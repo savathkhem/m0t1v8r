@@ -107,6 +107,7 @@ $(document).ready(function () {
                 goalName: $("#goal-name").val().trim(),
                 activity: $("#activity-name").val().trim(),
                 reminderTime: $("#remind-me").val().trim(),
+                phoneNumber: userPhone 
             };
             newGoal(goalObj);
         });
@@ -159,17 +160,18 @@ $(document).ready(function () {
         $.get("/api/users/" + (id))
             .then(function (data) {
                 console.log(data)
-                if (data[0].name) {
-                    console.log('User exists!')
-                }
-                else {
+                if (data.length === 0) {
                     console.log('create a new user!')
                     //Opens modal for user to input settings
                     $("#settings").modal();
                 }
+                else {
+                    console.log('User exists!')
+                    userPhone = data[0].phoneNumber;
+                    console.log('user phone: ' + userPhone);
+                }
             })
     }
-
 
     //GET all Goals for a user after login:
     var getGoals = function (id) {
@@ -355,6 +357,6 @@ $(document).ready(function () {
     };
 
 });
-
+var userPhone = "";
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF',]
