@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,9 +46,9 @@
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
-    </head>
+</head>
 
-    <body>
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -74,21 +75,27 @@
             </div>
             <div class="card-body">
                 <div class='row'>
-                <div class="col col-lg-2" id="user-pic">
-                    <!-- PROFILE PIC dynamic-->
-                </div>
-                <div class="col col-sm-8">
-                    <!-- PROFILE DESCRIPTION -->
-                    <!-- <p id="logo">
+                    <div class="col col-lg-2" id="user-pic">
+                        <!-- PROFILE PIC dynamic-->
+                    </div>
+                    <div class="col col-sm-8">
+                        <!-- PROFILE DESCRIPTION -->
+                        <!-- <p id="logo">
                             <a>M0T1V8R</a>
                     </p> -->
-                    <h1 style="font-family: Pacifico; color: #007bff">M0T1V8R  </h1>
-                      
-                    <p> <strong>Get started: Create a goal!</strong> </p>
-                    <p>Example, let’s say you want to take better care of your teeth, and to do that, you need to floss daily. Well, you can create a goal called ‘Floss Daily.’ The activity will be ‘flossing,’ and lastly you’ll select a time by which you’ll like to receive a reminder (let’s say 10pm). At 10pm, you’ll get reminder from us on your phone to floss (standard messaging rates may apply)!</p>      
-                    <p>Track your progress by logging in and track each time you floss, don’t worry, we’ll take care of the analysis for you and display your data in the current progress tab.</p>
+                        <h1 style="font-family: Pacifico; color: #007bff">M0T1V8R </h1>
+
+                        <p>
+                            <strong>Get started: Create a goal!</strong>
+                        </p>
+                        <p>Example, let’s say you want to take better care of your teeth, and to do that, you need to floss
+                            daily. Well, you can create a goal called ‘Floss Daily.’ The activity will be ‘flossing,’ and
+                            lastly you’ll select a time by which you’ll like to receive a reminder (let’s say 10pm). At 10pm,
+                            you’ll get reminder from us on your phone to floss (standard messaging rates may apply)!</p>
+                        <p>Track your progress by logging in and track each time you floss, don’t worry, we’ll take care of
+                            the analysis for you and display your data in the current progress tab.</p>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -191,7 +198,9 @@
             </div>
         </div>
     </div>
-    <br><br><br>
+    <br>
+    <br>
+    <br>
 
     <!-- New Goal Modal -->
     <div class="modal fade" id="newGoal" tabindex="-1" role="dialog" aria-labelledby="newGoalLabel" aria-hidden="true">
@@ -216,6 +225,13 @@
                         <div class="form-group">
                             <label for="time">Time To Receive Text:</label>
                             <select class="form-control" id="remind-me">
+                                <option value="0">12am</option>
+                                <option value="1">1am</option>
+                                <option value="2">2am</option>
+                                <option value="3">3am</option>
+                                <option value="4">4am</option>
+                                <option value="5">5am</option>
+                                <option value="6">6am</option>
                                 <option value="7">7am</option>
                                 <option value="8">8am</option>
                                 <option value="9">9am</option>
@@ -232,6 +248,7 @@
                                 <option value="20">8pm</option>
                                 <option value="21">9pm</option>
                                 <option value="22">10pm</option>
+                                <option value="23">11pm</option>
                             </select>
                         </div>
                     </form>
@@ -309,5 +326,6 @@
     <!-- JS Stuff -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
-    </body>
+</body>
+
 </html>
