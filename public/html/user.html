@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+    <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,9 +44,9 @@
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
-</head>
+    </head>
 
-<body>
+    <body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -69,22 +68,18 @@
 
     <div class="container">
         <div class="row">
+            <br>
             <div class="col col-lg-2" id="user-pic">
                 <!-- PROFILE PIC dynamic-->
             </div>
             <div class="col col-sm-8">
                 <!-- PROFILE DESCRIPTION -->
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat sit, obcaecati dolorum laboriosam labore
-                    velit qui, sapiente aliquam assumenda sint commodi blanditiis eaque est illo magnam quod quae exercitationem
-                    quas ea explicabo unde optio nesciunt! Laborum, eius facere quisquam ad ab sequi asperiores natus corporis
-                    facilis, alias magni incidunt exercitationem?</p>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-
             <!-- COL 1 -->
             <div class="col col-md-6">
                 <div class="card card-tasks">
@@ -174,7 +169,6 @@
                         <h5 class="card-category">Current Progress</h5>
                     </div>
                     <div class="card-body">
-
                         <!-- CHARTS GO HERE -->
                         <div id="charts-go-here"></div>
                     </div>
@@ -186,7 +180,8 @@
                 </div>
             </div>
         </div>
-        <br><br><br>
+    </div>
+    <br><br><br>
 
     <!-- New Goal Modal -->
     <div class="modal fade" id="newGoal" tabindex="-1" role="dialog" aria-labelledby="newGoalLabel" aria-hidden="true">
@@ -240,33 +235,32 @@
     </div>
 
         <!-- Setting Modal -->
-        <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="settingsLabel">My Settings</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-                                <small id="nameHelp" class="form-text text-muted">This is the name you'd like us to refer you to you as.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="number" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx" required>
-                                <small id="phoneMsg" class="form-text text-muted">The mobile number you'd like to receive reminders.</small>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit-new-user">Submit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
+    <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsLabel">My Settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                            <small id="nameHelp" class="form-text text-muted">This is the name you'd like us to refer you to you as.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="number" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx" required>
+                            <small id="phoneMsg" class="form-text text-muted">The mobile number you'd like to receive reminders.</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit-new-user">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -305,6 +299,5 @@
     <!-- JS Stuff -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
-</body>
-
+    </body>
 </html>
