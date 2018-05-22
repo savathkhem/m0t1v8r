@@ -86,6 +86,14 @@ $(document).ready(function () {
 
         //Click Listeners
 
+        //DROP DOWN FOR CHARTS
+        $(document).on("click", ".dropchart", function (event) {
+            event.preventDefault();
+            var id = $(this).data(id);
+            getCharts(id);
+        });
+
+
         //New User
         $(document).on("click", "#submit-new-user", function (event) {
             event.preventDefault();
@@ -107,7 +115,7 @@ $(document).ready(function () {
                 goalName: $("#goal-name").val().trim(),
                 activity: $("#activity-name").val().trim(),
                 reminderTime: $("#remind-me").val().trim(),
-                phoneNumber: userPhone 
+                phoneNumber: userPhone
             };
             newGoal(goalObj);
         });
@@ -164,8 +172,7 @@ $(document).ready(function () {
                     console.log('create a new user!')
                     //Opens modal for user to input settings
                     $("#settings").modal();
-                }
-                else {
+                } else {
                     console.log('User exists!')
                     userPhone = data[0].phoneNumber;
                     console.log('user phone: ' + userPhone);
@@ -182,7 +189,7 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     console.log([i] + ': for get goal: ' + data[i].goalName);
                     var goalId = data[i].id;
-                    getCharts(data[i]);
+                    // getCharts(data[i]);
                     getDropDown(data[i]);
                     if (data[i].completed == 0) {
                         $("#goals-go-here").append(`
@@ -216,11 +223,12 @@ $(document).ready(function () {
     //GET all Drop Down for a user after login:
     var getDropDown = function (data) {
         // for (var i = 0; i < data.length; i++) {
-            console.log(data);
-            var goalId = data.id;
-            $("#dropdowns-go-here").append(`
-                <a class="dropdown-item text-danger" href="#">Goal: ${data.goalName}</a>
+        console.log(data);
+        var goalId = data.id;
+        $("#dropdowns-go-here").append(`
+                <a class="dropdown-item text-danger dropchart" data-id="${data.id} ref="myCharts${data.id}">Goal: ${data.goalName}</a>
             `);
+        // getCharts(data);
         // }
     };
 
@@ -278,7 +286,7 @@ $(document).ready(function () {
     };
 
     var getCharts = function (goal) {
-        $("#charts-go-here").append(`<canvas id="myChart${goal.id}" width="400" height="200"></canvas>`)
+        $("#charts-go-here").html(`<canvas id="myChart${goal.id}" width="400" height="200"></canvas>`)
         $.get("/api/activities/" + goal.id)
             .then(function (data) {
                 console.log("get charts:");
@@ -286,7 +294,7 @@ $(document).ready(function () {
                 //chartData will hold our chart's datasets
                 var chartData = []
                 //Starting values for data array:
-                var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
+                var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ];
                 for (i = 0; i < data.length; i++) {
                     var m = data[i].createdAt;
                     console.log('created at: ' + m);
@@ -306,21 +314,19 @@ $(document).ready(function () {
                     type: 'line',
                     data: {
                         labels: months,
-                        datasets: [
-                            {
-                                data: graphData,
-                                label: goal.goalName,
-                                borderColor: "#18ce0f",
-                                backgroundColor: "#b5d0fc",
-                                //   pointBorderColor: "#FFF",
-                                pointBackgroundColor: "#18ce0f",
-                                pointBorderWidth: 2,
-                                pointHoverRadius: 4,
-                                pointHoverBorderWidth: 1,
-                                //   pointRadius: 4,
-                                fill: true,
-                            }
-                        ]
+                        datasets: [{
+                            data: graphData,
+                            label: goal.goalName,
+                            borderColor: "#18ce0f",
+                            backgroundColor: "#b5d0fc",
+                            //   pointBorderColor: "#FFF",
+                            pointBackgroundColor: "#18ce0f",
+                            pointBorderWidth: 2,
+                            pointHoverRadius: 4,
+                            pointHoverBorderWidth: 1,
+                            //   pointRadius: 4,
+                            fill: true,
+                        }]
                     },
                     options: {
                         responsive: true,
@@ -359,4 +365,4 @@ $(document).ready(function () {
 });
 var userPhone = "";
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF',]
+var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', ]
