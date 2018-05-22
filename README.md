@@ -1,20 +1,26 @@
 # M0T1V8R
 
-M0T1V8R is a web based application made to help users get into the habit of accomplishing daily goals. This application was made for Project 2 at the University of Richmond Coding Bootcamp.
+**M0T1V8R** is a web based application made to help users get into the habit of accomplishing daily goals. This application was made for Project 2 at the University of Richmond Coding Bootcamp.
 
-M0T1V8R was developed by Malika Sinkler, Savath Khem, Nathan Geckle and Cezar Carvalhaes in 2018.
+_M0T1V8R was developed by Malika Sinkler, Savath Khem, Nathan Geckle and Cezar Carvalhaes in 2018._
 
-Dependencies:
-    Firebase Auth
-    Bootstrap 4
-    Chart.js
-    Twilio
-    Dotenv
-    Express
-    MySQL + MySQL2
-    Sequelize
-    JawsDB
-    Request
+**Visit our live site at:** https://secure-tor-11865.herokuapp.com/
+
+**Dependencies:**
+    - Firebase Auth
+    - Bootstrap 4
+    - Chart.js
+    - Twilio
+    - Dotenv
+    - Express
+    - MySQL + MySQL2
+    - Sequelize
+    - JawsDB
+    - Request
+
+---
+
+**Instructions:**
 
 Users sign in through their google accounts, and Firebase handles the authentication, so all personal data is secure. Once signed in, users will provide their preferred name and phone number.
 
