@@ -7,8 +7,8 @@ var accountSid = 'AC7dd25431df6ebe89ff9a8e3ab436c361';
 var authToken = '1e4c9f348933c81fd4d34b2709b1587c';
 var client = require('twilio')(accountSid, authToken);
 
-//This interval runs every 10 seconds for test purposes, change to every hour before deployment
-setInterval(checkTimeToSend, 10000);
+//This interval runs every 60 seconds for test purposes, change to every hour before deployment
+setInterval(checkTimeToSend, 60000);
 
 function checkTimeToSend() {
     console.log("interval!");
