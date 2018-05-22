@@ -86,7 +86,18 @@ $(document).ready(function () {
 
         //Click Listeners
 
-        //New User
+        //DROP DOWN FOR CHARTS
+        $(document).on("click", ".dropchart", function (event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            console.log(id);
+            console.log(name);
+            getCharts(id, name);
+        });
+
+
+        //New User'
         $(document).on("click", "#submit-new-user", function (event) {
             event.preventDefault();
             console.log("submit!");
@@ -107,7 +118,7 @@ $(document).ready(function () {
                 goalName: $("#goal-name").val().trim(),
                 activity: $("#activity-name").val().trim(),
                 reminderTime: $("#remind-me").val().trim(),
-                phoneNumber: userPhone 
+                phoneNumber: userPhone
             };
             newGoal(goalObj);
         });
@@ -164,8 +175,7 @@ $(document).ready(function () {
                     console.log('create a new user!')
                     //Opens modal for user to input settings
                     $("#settings").modal();
-                }
-                else {
+                } else {
                     console.log('User exists!')
                     userPhone = data[0].phoneNumber;
                     console.log('user phone: ' + userPhone);
@@ -182,22 +192,22 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     console.log([i] + ': for get goal: ' + data[i].goalName);
                     var goalId = data[i].id;
-                    getCharts(data[i]);
+                    // getCharts(data[i]);
                     getDropDown(data[i]);
                     if (data[i].completed == 0) {
                         $("#goals-go-here").append(`
-                        <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
-                        <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
-                        <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
-                        <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                        <li> Goal: ${data[i].goalName}
+                        <button class = "btn btn-primary submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}"><i class="fas fa-search-plus"></i></button>
+                        <button class= "btn btn-primary mark-complete" data-id = "${data[i].id}"><i class="fas fa-check-circle"></i></button>
+                        <button class = "btn btn-primary delete-goal" data-id = "${data[i].id}"><i class="fas fa-trash-alt"></i></button>
                         </li>
                         `);
                     } else if (data[i].completed == 1) {
                         $("#completed-go-here").append(`
-                        <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
-                        <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
-                        <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
-                        <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                        <li> Goal: ${data[i].goalName}
+                        <button class = "btn btn-success submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}"><i class="fas fa-search-plus"></i></button>
+                        <button class= "btn btn-success mark-complete" data-id = "${data[i].id}"><i class="fas fa-check-circle"></i></button>
+                        <button class = "btn btn-success delete-goal" data-id = "${data[i].id}"><i class="fas fa-trash-alt"></i></button>
                         </li>
                         `);
                     }
@@ -216,11 +226,12 @@ $(document).ready(function () {
     //GET all Drop Down for a user after login:
     var getDropDown = function (data) {
         // for (var i = 0; i < data.length; i++) {
-            console.log(data);
-            var goalId = data.id;
-            $("#dropdowns-go-here").append(`
-                <a class="dropdown-item text-danger" href="#">Goal: ${data.goalName}</a>
+        console.log(data);
+        // var goalId = data.id;
+        $("#dropdowns-go-here").append(`
+                <a class="dropdown-item text-danger dropchart" data-id="${data.id} "data-name= "${data.goalName}" ref="myCharts${data.id}">Goal: ${data.goalName}</a>
             `);
+        // getCharts(data);
         // }
     };
 
@@ -277,16 +288,16 @@ $(document).ready(function () {
         });
     };
 
-    var getCharts = function (goal) {
-        $("#charts-go-here").append(`<canvas id="myChart${goal.id}" width="400" height="200"></canvas>`)
-        $.get("/api/activities/" + goal.id)
+    var getCharts = function (goalId, goalName) {
+        $("#charts-go-here").html(`<canvas id="myChart${goalId}" width="400" height="200"></canvas>`)
+        $.get("/api/activities/" + goalId)
             .then(function (data) {
                 console.log("get charts:");
                 console.log(data);
                 //chartData will hold our chart's datasets
                 var chartData = []
                 //Starting values for data array:
-                var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
+                var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ];
                 for (i = 0; i < data.length; i++) {
                     var m = data[i].createdAt;
                     console.log('created at: ' + m);
@@ -300,27 +311,27 @@ $(document).ready(function () {
                 }
 
                 console.log('chartdata: ' + graphData);
-                var ctx = $(`#myChart${goal.id}`);
-                ctx.height = 100;
+                var ctx = document.getElementById('myChart' + goalId);
+                // var ctx = $('#myChart' + goalId);
+                console.log(ctx)
+                ctx.height = 200;
                 var myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: months,
-                        datasets: [
-                            {
-                                data: graphData,
-                                label: goal.goalName,
-                                borderColor: "#18ce0f",
-                                backgroundColor: "#b5d0fc",
-                                //   pointBorderColor: "#FFF",
-                                pointBackgroundColor: "#18ce0f",
-                                pointBorderWidth: 2,
-                                pointHoverRadius: 4,
-                                pointHoverBorderWidth: 1,
-                                //   pointRadius: 4,
-                                fill: true,
-                            }
-                        ]
+                        datasets: [{
+                            data: graphData,
+                            label: goalName,
+                            borderColor: "#18ce0f",
+                            backgroundColor: "#b5d0fc",
+                            //   pointBorderColor: "#FFF",
+                            pointBackgroundColor: "#18ce0f",
+                            pointBorderWidth: 2,
+                            pointHoverRadius: 4,
+                            pointHoverBorderWidth: 1,
+                            //   pointRadius: 4,
+                            fill: true,
+                        }]
                     },
                     options: {
                         responsive: true,
@@ -359,4 +370,4 @@ $(document).ready(function () {
 });
 var userPhone = "";
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF',]
+var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', ]
