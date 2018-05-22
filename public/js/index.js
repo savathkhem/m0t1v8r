@@ -87,6 +87,7 @@ $(document).ready(function () {
         //Retrieves goals from database
         getGoals(userObject.uid);
 
+
         //Click Listeners
 
         //DROP DOWN FOR CHARTS
@@ -94,8 +95,6 @@ $(document).ready(function () {
             event.preventDefault();
             var id = $(this).data('id');
             var name = $(this).data('name');
-            console.log(id);
-            console.log(name);
             getCharts(id, name);
         });
 
@@ -195,7 +194,7 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     console.log([i] + ': for get goal: ' + data[i].goalName);
                     var goalId = data[i].id;
-                    // getCharts(data[i]);
+                    getCharts(data[0].id, data[0].goalName);
                     getDropDown(data[i]);
                     if (data[i].completed == 0) {
                         $("#goals-go-here").append(`
@@ -298,7 +297,7 @@ $(document).ready(function () {
                 //chartData will hold our chart's datasets
                 var chartData = [];
                 //Starting values for data array:
-                var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ];
+                var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
                 for (i = 0; i < data.length; i++) {
                     var m = data[i].createdAt;
                     console.log('created at: ' + m);
@@ -315,7 +314,7 @@ $(document).ready(function () {
                 var ctx = document.getElementById('myChart' + goalId);
                 // var ctx = $('#myChart' + goalId);
                 console.log(ctx)
-                ctx.height = 200;
+                // ctx.height = 200;
                 var myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -371,7 +370,7 @@ $(document).ready(function () {
 });
 var userPhone = "";
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', ];
+var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF',];
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
