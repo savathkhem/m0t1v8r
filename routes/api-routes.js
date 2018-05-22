@@ -21,9 +21,18 @@ module.exports = function (app) {
     console.log(req.params.goalId);
     db.Activity.findAll({
       where: { goalId: id },
-      //   include: [db.User]
     }).then(function (goal) {
       res.json(goal);
+    });
+  });
+
+  //GET route for all users
+  app.get("/api/users/:id", function(req, res){
+    var id = req.params.id
+    db.User.findAll({
+      where: {userId: id},
+    }).then (function(user){
+      res.json(user);
     });
   });
 
@@ -46,6 +55,13 @@ module.exports = function (app) {
       res.json(goal);
     });
   });
+
+    // POST route for saving a new user
+    app.post("/api/users", function (req, res) {
+      db.User.create(req.body).then(function (user) {
+        res.json(user);
+      });
+    });
 
   // POST route for saving activities
   app.post("/api/goals/track", function (req, res) {
