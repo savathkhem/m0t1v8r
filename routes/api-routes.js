@@ -28,7 +28,7 @@ module.exports = function (app) {
 
   //GET route for all users
   app.get("/api/users/:id", function(req, res){
-    var id = req.params.id
+    var id = req.params.id;
     db.User.findAll({
       where: {userId: id},
     }).then (function(user){

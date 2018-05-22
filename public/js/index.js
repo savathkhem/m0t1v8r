@@ -54,6 +54,9 @@ window.onload = function () {
         e.preventDefault();
         e.stopPropagation();
         firebase.auth().signOut();
+        setTimeout(function() {
+            window.location.replace("/");
+        }, 1000);
     });
 };
 
@@ -77,7 +80,7 @@ $(document).ready(function () {
     var renderPage = function (userObject) {
         console.log('render page');
         //Check if user exists in db or not
-        getUsers(userObject.uid)
+        getUsers(userObject.uid);
         //Populate page with user info
         $("#welcome").html("Welcome " + userObject.displayName + "!");
         $("#user-pic").html(`<img style="width:70%" src= "${userObject.photoURL}">`);
@@ -170,18 +173,18 @@ $(document).ready(function () {
     var getUsers = function (id) {
         $.get("/api/users/" + (id))
             .then(function (data) {
-                console.log(data)
+                console.log(data);
                 if (data.length === 0) {
-                    console.log('create a new user!')
+                    console.log('create a new user!');
                     //Opens modal for user to input settings
                     $("#settings").modal();
                 } else {
-                    console.log('User exists!')
+                    console.log('User exists!');
                     userPhone = data[0].phoneNumber;
                     console.log('user phone: ' + userPhone);
                 }
-            })
-    }
+            });
+    };
 
     //GET all Goals for a user after login:
     var getGoals = function (id) {
@@ -220,8 +223,8 @@ $(document).ready(function () {
         $.post('/api/users', newUserObj)
             .then(function (data) {
                 location.reload();
-            })
-    }
+            });
+    };
 
     //GET all Drop Down for a user after login:
     var getDropDown = function (data) {
@@ -287,7 +290,6 @@ $(document).ready(function () {
 
         });
     };
-
     var getCharts = function (goalId, goalName) {
         $("#charts-go-here").html(`<canvas id="myChart${goalId}" width="400" height="200"></canvas>`)
         $.get("/api/activities/" + goalId)
@@ -295,7 +297,7 @@ $(document).ready(function () {
                 console.log("get charts:");
                 console.log(data);
                 //chartData will hold our chart's datasets
-                var chartData = []
+                var chartData = [];
                 //Starting values for data array:
                 var graphData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ];
                 for (i = 0; i < data.length; i++) {
@@ -370,4 +372,4 @@ $(document).ready(function () {
 });
 var userPhone = "";
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', ]
+var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', ];
