@@ -89,12 +89,15 @@ $(document).ready(function () {
         //DROP DOWN FOR CHARTS
         $(document).on("click", ".dropchart", function (event) {
             event.preventDefault();
-            var id = $(this).data(id);
-            getCharts(id);
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            console.log(id);
+            console.log(name);
+            getCharts(id, name);
         });
 
 
-        //New User
+        //New User'
         $(document).on("click", "#submit-new-user", function (event) {
             event.preventDefault();
             console.log("submit!");
@@ -193,18 +196,18 @@ $(document).ready(function () {
                     getDropDown(data[i]);
                     if (data[i].completed == 0) {
                         $("#goals-go-here").append(`
-                        <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
-                        <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
-                        <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
-                        <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                        <li> Goal: ${data[i].goalName}
+                        <button class = "btn btn-primary submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}"><i class="fas fa-search-plus"></i></button>
+                        <button class= "btn btn-primary mark-complete" data-id = "${data[i].id}"><i class="fas fa-check-circle"></i></button>
+                        <button class = "btn btn-primary delete-goal" data-id = "${data[i].id}"><i class="fas fa-trash-alt"></i></button>
                         </li>
                         `);
                     } else if (data[i].completed == 1) {
                         $("#completed-go-here").append(`
-                        <li> Goal Id: ${data[i].id}    |   Goal: ${data[i].goalName} Complete: ${data[i].completed}
-                        <button class = "submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}">Track It</button>
-                        <button class = "delete-goal" data-id = "${data[i].id}">Delete</button>
-                        <button class= "mark-complete" data-id = "${data[i].id}">Complete!</button>
+                        <li> Goal: ${data[i].goalName}
+                        <button class = "btn btn-success submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}"><i class="fas fa-search-plus"></i></button>
+                        <button class= "btn btn-success mark-complete" data-id = "${data[i].id}"><i class="fas fa-check-circle"></i></button>
+                        <button class = "btn btn-success delete-goal" data-id = "${data[i].id}"><i class="fas fa-trash-alt"></i></button>
                         </li>
                         `);
                     }
@@ -224,9 +227,9 @@ $(document).ready(function () {
     var getDropDown = function (data) {
         // for (var i = 0; i < data.length; i++) {
         console.log(data);
-        var goalId = data.id;
+        // var goalId = data.id;
         $("#dropdowns-go-here").append(`
-                <a class="dropdown-item text-danger dropchart" data-id="${data.id} ref="myCharts${data.id}">Goal: ${data.goalName}</a>
+                <a class="dropdown-item text-danger dropchart" data-id="${data.id} "data-name= "${data.goalName}" ref="myCharts${data.id}">Goal: ${data.goalName}</a>
             `);
         // getCharts(data);
         // }
@@ -285,9 +288,9 @@ $(document).ready(function () {
         });
     };
 
-    var getCharts = function (goal) {
-        $("#charts-go-here").html(`<canvas id="myChart${goal.id}" width="400" height="200"></canvas>`)
-        $.get("/api/activities/" + goal.id)
+    var getCharts = function (goalId, goalName) {
+        $("#charts-go-here").html(`<canvas id="myChart${goalId}" width="400" height="200"></canvas>`)
+        $.get("/api/activities/" + goalId)
             .then(function (data) {
                 console.log("get charts:");
                 console.log(data);
@@ -308,15 +311,17 @@ $(document).ready(function () {
                 }
 
                 console.log('chartdata: ' + graphData);
-                var ctx = $(`#myChart${goal.id}`);
-                ctx.height = 100;
+                var ctx = document.getElementById('myChart' + goalId);
+                // var ctx = $('#myChart' + goalId);
+                console.log(ctx)
+                ctx.height = 200;
                 var myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: months,
                         datasets: [{
                             data: graphData,
-                            label: goal.goalName,
+                            label: goalName,
                             borderColor: "#18ce0f",
                             backgroundColor: "#b5d0fc",
                             //   pointBorderColor: "#FFF",
