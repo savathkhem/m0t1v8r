@@ -1,10 +1,10 @@
+require("dotenv").config();
 var db = require("../models");
-var request = require('request');
-
+var request = require('request')
 
 //TWILLIO
-var accountSid = 'AC7dd25431df6ebe89ff9a8e3ab436c361';
-var authToken = '1e4c9f348933c81fd4d34b2709b1587c';
+var accountSid = process.env.TWILIO_ACCOUNT_SID;
+var authToken = process.env.TWILIO_AUTH_TOKEN;
 var client = require('twilio')(accountSid, authToken);
 
 //This interval runs every 60 seconds for test purposes, change to every hour before deployment
