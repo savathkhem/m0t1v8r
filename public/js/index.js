@@ -54,7 +54,7 @@ window.onload = function () {
         e.preventDefault();
         e.stopPropagation();
         firebase.auth().signOut();
-        setTimeout(function() {
+        setTimeout(function () {
             window.location.replace("/");
         }, 1000);
     });
@@ -200,17 +200,16 @@ $(document).ready(function () {
                     if (data[i].completed == 0) {
                         $("#goals-go-here").append(`
                         <li> Goal: ${data[i].goalName}
-                        <button class = "btn btn-primary submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}"><i class="fas fa-search-plus"></i></button>
-                        <button class= "btn btn-primary mark-complete" data-id = "${data[i].id}"><i class="fas fa-check-circle"></i></button>
-                        <button class = "btn btn-primary delete-goal" data-id = "${data[i].id}"><i class="fas fa-trash-alt"></i></button>
+                        <button class = "btn btn-primary submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}" data-toggle="tooltip" data-placement="top" title="Track Your Goals"><i class="fas fa-search-plus"></i></button>
+                        <button class= "btn btn-primary mark-complete" data-id = "${data[i].id}" data-toggle="tooltip" data-placement="top" title="Completed This Goal"><i class="fas fa-check-circle"></i></button>
+                        <button class = "btn btn-primary delete-goal" data-id = "${data[i].id}" data-toggle="tooltip" data-placement="top" title="Delete This Goal"><i class="fas fa-trash-alt"></i></button>
                         </li>
                         `);
                     } else if (data[i].completed == 1) {
                         $("#completed-go-here").append(`
                         <li> Goal: ${data[i].goalName}
-                        <button class = "btn btn-success submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}"><i class="fas fa-search-plus"></i></button>
-                        <button class= "btn btn-success mark-complete" data-id = "${data[i].id}"><i class="fas fa-check-circle"></i></button>
-                        <button class = "btn btn-success delete-goal" data-id = "${data[i].id}"><i class="fas fa-trash-alt"></i></button>
+                        <button class = "btn btn-success submit-activity" data-id = "${data[i].id}" data-activity = "${data[i].activity}" data-toggle="tooltip" data-placement="top" title="Track Your Goals"><i class="fas fa-search-plus"></i></button>
+                        <button class = "btn btn-success delete-goal" data-id = "${data[i].id}" data-toggle="tooltip" data-placement="top" title="Delete This Goal"><i class="fas fa-trash-alt"></i></button>
                         </li>
                         `);
                     }
@@ -373,3 +372,7 @@ $(document).ready(function () {
 var userPhone = "";
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var lineColors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', ];
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
