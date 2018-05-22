@@ -3,7 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 
 // Read and set environment variables
-require("dotenv").config();
+require('dotenv').config();
 
 // Sets up the Express App
 var app = express();
@@ -19,6 +19,11 @@ app.use(bodyParser.json());
 
 // Static directory
 app.use(express.static("public"));
+
+/*app.get('/', (req, res)=>{
+  res.send(process.env.ACCOUNT_SID);
+  res.send(process.env.AUTH_TOKEN)
+}); */
 
 // Routes
 require("./routes/api-routes.js")(app);
